@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Furniture-Shopping-Android-App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_started">Get Started</string>
+    <string name="make_your">MAKE YOUR</string>
+    <string name="home_beautiful">HOME BEAUTIFUL</string>
+    <string name="get_started_text">The best simple place where you discover most wonderful furnitures and make your home beautiful</string>
+    <string name="get_started_content_description">Background image of a living room with a sofa</string>
+    <string name="hello">Hello!</string>
+    <string name="welcome_back">WELCOME BACK</string>
 </resources>
