@@ -23,7 +23,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/get_started_background" />
+            app:srcCompat="@drawable/get_started_background"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/textView2"

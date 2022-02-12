@@ -16,7 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.group.furniture_shopping_android_app.secondFragment"
+        android:name="com.group.furniture_shopping_android_app.SecondFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/fragment_second" >
+        <action
+            android:id="@+id/action_secondFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.group.furniture_shopping_android_app.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
 </navigation>

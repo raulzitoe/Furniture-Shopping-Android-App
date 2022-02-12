@@ -1,13 +1,12 @@
 package com.group.furniture_shopping_android_app
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.google.android.material.navigation.NavigationBarItemView
 import com.group.furniture_shopping_android_app.databinding.FragmentFirstBinding
 
 
@@ -17,7 +16,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        (activity as AppCompatActivity?)?.supportActionBar?.hide()
     }
 
     override fun onCreateView(

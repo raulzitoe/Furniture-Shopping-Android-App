@@ -12,5 +12,8 @@
     <color name="light_gray">#606060</color>
     <color name="light_gray_2">#808080</color>
     <color name="light_gray_3">#909090</color>
+    <color name="light_gray_4">#E0E0E0</color>
+    <color name="light_gray_5">#CACCCE</color>
     <color name="font_black">#303030</color>
+
 </resources>
