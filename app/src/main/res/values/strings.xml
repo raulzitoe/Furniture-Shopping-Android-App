@@ -9,6 +9,7 @@
     <string name="get_started_content_description">Background image of a living room with a sofa</string>
     <string name="hello">Hello!</string>
     <string name="welcome_back">WELCOME BACK</string>
+    <string name="welcome">WELCOME</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="hint_your_email">Insert your email</string>
@@ -18,4 +19,6 @@
     <string name="sign_up">SIGN UP</string>
     <string name="name">Name</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="sign_in">SIGN IN</string>
 </resources>
