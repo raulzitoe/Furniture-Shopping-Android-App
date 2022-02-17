@@ -12,16 +12,19 @@
         tools:layout="@layout/fragment_first" >
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
-            app:destination="@id/secondFragment" />
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/secondFragment"
-        android:name="com.group.furniture_shopping_android_app.SecondFragment"
+        android:id="@+id/loginFragment"
+        android:name="com.group.furniture_shopping_android_app.LoginFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" >
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_secondFragment_to_signUpFragment"
+            android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -29,7 +32,11 @@
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
-            android:id="@+id/action_signUpFragment_to_secondFragment"
-            app:destination="@id/secondFragment" />
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.group.furniture_shopping_android_app.HomeActivity"
+        android:label="HomeActivity" />
 </navigation>

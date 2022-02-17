@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.group.furniture_shopping_android_app.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.group.furniture_shopping_android_app.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.group.furniture_shopping_android_app.HomeActivity"
+        android:label="HomeActivity" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.group.furniture_shopping_android_app.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.group.furniture_shopping_android_app.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
