@@ -7,12 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import com.group.furniture_shopping_android_app.databinding.FragmentFirstBinding
-import com.group.furniture_shopping_android_app.databinding.FragmentSecondBinding
+import com.group.furniture_shopping_android_app.databinding.FragmentLoginBinding
 
-class SecondFragment : Fragment() {
+class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentSecondBinding
+    private lateinit var binding: FragmentLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +23,17 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSecondBinding.inflate(layoutInflater)
+        binding = FragmentLoginBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvSignup.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_secondFragment_to_signUpFragment)
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_signUpFragment)
+        }
+        binding.btnLogin.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeActivity)
         }
     }
 }
