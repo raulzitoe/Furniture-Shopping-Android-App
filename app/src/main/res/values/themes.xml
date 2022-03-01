@@ -21,4 +21,23 @@
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="rippleColor">@android:color/transparent</item>
     </style>
+
+    <style name="ImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ProfileCard">
+        <item name="cardElevation">10dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:paddingStart">20dp</item>
+    </style>
+    <style name="ProfileCardLayout">
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:elevation">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
 </resources>
