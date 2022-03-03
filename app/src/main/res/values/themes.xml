@@ -22,9 +22,13 @@
         <item name="rippleColor">@android:color/transparent</item>
     </style>
 
-    <style name="ImageViewRounded">
+    <style name="ImageViewRounded50">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+    <style name="ImageViewRounded10">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
     </style>
 
     <style name="ProfileCard">

@@ -99,7 +99,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_home_products"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -107,9 +107,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/filter_scroll"
             tools:itemCount="8"
-            tools:listitem="@layout/item_product">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            tools:listitem="@layout/item_product"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -23,8 +23,6 @@
     <string name="favorites">Favorites</string>
     <string name="notifications">Notifications</string>
     <string name="profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search">Search</string>
     <string name="content_desc_search">Search Button</string>
     <string name="cart">Cart</string>
@@ -34,20 +32,49 @@
     <string name="payment_method">Payment Method</string>
     <string name="my_reviews">My Reviews</string>
     <string name="settings">Settings</string>
+    <string name="quantity_orders_zero">You don\'t have any orders yet</string>
+    <plurals name="quantity_orders">
+        <item quantity="one">You have %d order</item>
+        <item quantity="other">You have %d orders </item>
+    </plurals>
+    <string name="quantity_shipping_zero">You have no shipping addresses saved</string>
+    <plurals name="quantity_shipping">
+        <item quantity="one">You have %d shipping address saved</item>
+        <item quantity="other">You have %d shipping addresses saved</item>
+    </plurals>
+    <string name="quantity_cards_zero">You have no shipping addresses saved</string>
+    <plurals name="quantity_cards">
+        <item quantity="one">You have %d card saved</item>
+        <item quantity="other">You have %d cards saved</item>
+    </plurals>
+    <string name="quantity_reviews_zero">You made no reviews so far</string>
+    <string name="notification">Notification</string>
+    <plurals name="quantity_reviews">
+        <item quantity="one">You have made %d review</item>
+        <item quantity="other">You have made %d reviews</item>
+    </plurals>
+
 
     <string-array name="product_array">
         <item>Bed</item>
         <item>Lamp</item>
-        <item>Table</item>
-        <item>Bed</item>
-        <item>Lamp</item>
-        <item>Table</item>
-        <item>Bed</item>
-        <item>Lamp</item>
-        <item>Table</item>
-        <item>Bed</item>
-        <item>Lamp</item>
-        <item>Table</item>
+<!--        <item>Table</item>-->
+<!--        <item>Bed</item>-->
+<!--        <item>Lamp</item>-->
+<!--        <item>Table</item>-->
+<!--        <item>Bed</item>-->
+<!--        <item>Lamp</item>-->
+<!--        <item>Table</item>-->
+<!--        <item>Bed</item>-->
+<!--        <item>Lamp</item>-->
+<!--        <item>Table</item>-->
+    </string-array>
+    <string-array name="notification_array">
+        <item>Notification 1</item>
+        <item>Notification 2</item>
+        <item>Notification 3</item>
+        <item>Notification 4</item>
+        <item>Notification 5</item>
     </string-array>
 
 </resources>

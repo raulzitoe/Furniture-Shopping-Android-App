@@ -28,7 +28,7 @@
                 android:background="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ImageViewRounded" />
+                app:shapeAppearanceOverlay="@style/ImageViewRounded50" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -90,14 +90,17 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_my_orders_quantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="18dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="Already have 10 orders"
+                        tools:text="Already have 10 orders"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/my_orders" />
+                        app:layout_constraintTop_toBottomOf="@id/my_orders"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="10dp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -138,11 +141,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_shipping_address_quantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="18dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="Already have 10 orders"
+                        tools:text="You have 10 addresses saved"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/shipping_addresses" />
@@ -186,11 +190,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_cards_quantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="18dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="You have 2 cards"
+                        tools:text="You have 2 cards"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/payment_method" />
@@ -234,11 +239,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_reviews_quantity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="18dp"
                         android:fontFamily="@font/nunito_sans"
-                        android:text="Already have 10 orders"
+                        tools:text="You have made 10 reviews"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/my_reviews" />
