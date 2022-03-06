@@ -1,17 +1,19 @@
-package com.group.furniture_shopping_android_app
+package com.group.furniture_shopping_android_app.login_signup
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.group.furniture_shopping_android_app.databinding.FragmentLoginBinding
+import com.group.furniture_shopping_android_app.R
+import com.group.furniture_shopping_android_app.databinding.FragmentGetStartedBinding
 
-class LoginFragment : Fragment() {
 
-    private lateinit var binding: FragmentLoginBinding
+class GetStartedFragment : Fragment() {
+
+    private lateinit var binding: FragmentGetStartedBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,19 +23,16 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        binding = FragmentLoginBinding.inflate(layoutInflater)
+        binding = FragmentGetStartedBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.tvSignup.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_signUpFragment)
-        }
-        binding.btnLogin.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeActivity)
+        binding.btnGetStarted.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_firstFragment_to_secondFragment)
         }
     }
 }

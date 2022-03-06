@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.group.furniture_shopping_android_app.FirstFragment"
+        android:name="com.group.furniture_shopping_android_app.login_signup.GetStartedFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" >
+        tools:layout="@layout/fragment_get_started" >
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.group.furniture_shopping_android_app.LoginFragment"
+        android:name="com.group.furniture_shopping_android_app.login_signup.LoginFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_login" >
         <action
@@ -28,15 +28,18 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.group.furniture_shopping_android_app.SignUpFragment"
+        android:name="com.group.furniture_shopping_android_app.login_signup.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
     <activity
         android:id="@+id/homeActivity"
-        android:name="com.group.furniture_shopping_android_app.HomeActivity"
+        android:name="com.group.furniture_shopping_android_app.MainActivity"
         android:label="HomeActivity" />
 </navigation>

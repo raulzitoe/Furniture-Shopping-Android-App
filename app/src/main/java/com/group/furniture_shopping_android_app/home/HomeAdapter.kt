@@ -1,4 +1,4 @@
-package com.group.furniture_shopping_android_app
+package com.group.furniture_shopping_android_app.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

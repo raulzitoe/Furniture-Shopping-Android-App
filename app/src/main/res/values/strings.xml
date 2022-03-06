@@ -49,6 +49,12 @@
     </plurals>
     <string name="quantity_reviews_zero">You made no reviews so far</string>
     <string name="notification">Notification</string>
+    <string name="popular">Popular</string>
+    <string name="chair">Chair</string>
+    <string name="table">Table</string>
+    <string name="armchair">Armchair</string>
+    <string name="bed">Bed</string>
+    <string name="lamp">Lamp</string>
     <plurals name="quantity_reviews">
         <item quantity="one">You have made %d review</item>
         <item quantity="other">You have made %d reviews</item>
@@ -58,16 +64,16 @@
     <string-array name="product_array">
         <item>Bed</item>
         <item>Lamp</item>
-<!--        <item>Table</item>-->
-<!--        <item>Bed</item>-->
-<!--        <item>Lamp</item>-->
-<!--        <item>Table</item>-->
-<!--        <item>Bed</item>-->
-<!--        <item>Lamp</item>-->
-<!--        <item>Table</item>-->
-<!--        <item>Bed</item>-->
-<!--        <item>Lamp</item>-->
-<!--        <item>Table</item>-->
+        <item>Table</item>
+        <item>Bed</item>
+        <item>Lamp</item>
+        <item>Table</item>
+        <item>Bed</item>
+        <item>Lamp</item>
+        <item>Table</item>
+        <item>Bed</item>
+        <item>Lamp</item>
+        <item>Table</item>
     </string-array>
     <string-array name="notification_array">
         <item>Notification 1</item>
@@ -75,6 +81,15 @@
         <item>Notification 3</item>
         <item>Notification 4</item>
         <item>Notification 5</item>
+    </string-array>
+    <string-array name="favorites_array">
+        <item>Favorite 1</item>
+        <item>Favorite 2</item>
+        <item>Favorite 3</item>
+        <item>Favorite 4</item>
+        <item>Favorite 5</item>
+        <item>Favorite 6</item>
+        <item>Favorite 7</item>
     </string-array>
 
 </resources>

@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.group.furniture_shopping_android_app.HomeFragment"
+        android:name="com.group.furniture_shopping_android_app.home.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.group.furniture_shopping_android_app.FavoritesFragment"
+        android:name="com.group.furniture_shopping_android_app.favorites.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <activity
         android:id="@+id/homeActivity"
-        android:name="com.group.furniture_shopping_android_app.HomeActivity"
+        android:name="com.group.furniture_shopping_android_app.MainActivity"
         android:label="HomeActivity" />
     <fragment
         android:id="@+id/notificationFragment"
-        android:name="com.group.furniture_shopping_android_app.NotificationFragment"
+        android:name="com.group.furniture_shopping_android_app.notification.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.group.furniture_shopping_android_app.ProfileFragment"
+        android:name="com.group.furniture_shopping_android_app.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

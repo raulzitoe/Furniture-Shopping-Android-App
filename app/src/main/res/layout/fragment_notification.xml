@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".NotificationFragment">
+        tools:context=".notification.NotificationFragment">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/top_app_bar_notification_layout"
