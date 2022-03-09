@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentFavoritesBinding
-import com.group.furniture_shopping_android_app.home.HomeAdapter
-import com.group.furniture_shopping_android_app.home.HomeModel
 
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding

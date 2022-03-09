@@ -3,16 +3,19 @@ package com.group.furniture_shopping_android_app.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.databinding.ItemProductBinding
 
-class HomeAdapter (private val productList: Array<String>) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
+class HomeAdapter () : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private lateinit var binding: ItemProductBinding
+    var productList: ArrayList<ProductModel> = arrayListOf()
 
-    class HomeViewHolder(val binding: ItemProductBinding, val productList: Array<String>) : RecyclerView.ViewHolder(binding.root) {
+    class HomeViewHolder(val binding: ItemProductBinding, val productList: ArrayList<ProductModel>) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
-            binding.productName.text = productList[position]
-            binding.productPrice.text = "12.00"
+            val product = productList[position]
+            binding.productName.text = product.name
+            binding.productPrice.text = product.price
         }
     }
 

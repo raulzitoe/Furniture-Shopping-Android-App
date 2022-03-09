@@ -1,0 +1,25 @@
+{
+  "productList": [
+    {
+      "id": 0,
+      "name": "Brown Table",
+      "price": "12.00",
+      "category": "Table",
+      "image": ""
+    },
+    {
+      "id": 1,
+      "name": "White Bed",
+      "price": "200.00",
+      "category": "Bed",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "name": "Red Chair",
+      "price": "45.00",
+      "category": "Chair",
+      "image": ""
+    }
+  ]
+}
