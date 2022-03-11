@@ -55,6 +55,7 @@
     <string name="armchair">Armchair</string>
     <string name="bed">Bed</string>
     <string name="lamp">Lamp</string>
+    <string name="add_all_to_my_cart">Add all to my cart</string>
     <plurals name="quantity_reviews">
         <item quantity="one">You have made %d review</item>
         <item quantity="other">You have made %d reviews</item>

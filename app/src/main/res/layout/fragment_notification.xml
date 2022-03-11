@@ -22,7 +22,7 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/top_app_bar_notification"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                style="@style/AppBarFurniture"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:menu="@menu/top_app_bar_notification"

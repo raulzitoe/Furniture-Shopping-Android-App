@@ -21,7 +21,7 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/top_app_bar_favorites"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                style="@style/AppBarFurniture"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:menu="@menu/top_app_bar_favorites"
@@ -38,6 +38,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/top_app_bar_favorites_layout"
             tools:listitem="@layout/item_favorites"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/add_all_to_my_cart"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:textSize="18sp"
+            android:paddingVertical="12dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

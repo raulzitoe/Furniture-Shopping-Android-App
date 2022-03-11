@@ -22,7 +22,7 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/topAppBar"
-                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                style="@style/AppBarFurniture"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:menu="@menu/top_app_bar_home"
@@ -40,12 +40,12 @@
             app:layout_constraintTop_toBottomOf="@id/app_bar_layout">
 
             <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/toggleButton"
+                android:id="@+id/home_toggle_button_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/button1"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_popular"
                     style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -53,40 +53,40 @@
                     android:text="@string/popular"
                     app:icon="@drawable/selector_star" />
 
-                <Button
-                    android:id="@+id/button2"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_chair"
                     style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/chair"
                     app:icon="@drawable/selector_chair" />
 
-                <Button
-                    android:id="@+id/button3"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_table"
                     style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/table"
                     app:icon="@drawable/selector_table" />
 
-                <Button
-                    android:id="@+id/button4"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_armchair"
                     style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/armchair"
                     app:icon="@drawable/selector_armchair" />
 
-                <Button
-                    android:id="@+id/button5"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_bed"
                     style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bed"
                     app:icon="@drawable/selector_bed" />
 
-                <Button
-                    android:id="@+id/button6"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_lamp"
                     style="@style/ToggleButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

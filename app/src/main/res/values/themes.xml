@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.FurnitureShoppingAndroidApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -43,5 +44,9 @@
         <item name="android:paddingStart">10dp</item>
         <item name="android:elevation">10dp</item>
         <item name="android:paddingBottom">10dp</item>
+    </style>
+    <style name="AppBarFurniture" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@color/white</item>
+        <item name="titleTextColor">@color/font_black</item>
     </style>
 </resources>
