@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "225912687816",
+    "firebase_url": "https://furniture-shopping-android-app-default-rtdb.firebaseio.com",
+    "project_id": "furniture-shopping-android-app",
+    "storage_bucket": "furniture-shopping-android-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225912687816:android:3492621b289501c3e129fd",
+        "android_client_info": {
+          "package_name": "com.group.furniture_shopping_android_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225912687816-2lv0pq0s9s9aje4giilpum22aaenr3rt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa1nepfW5dhGWNr7k8GWBj7DK8VlfYLVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225912687816-2lv0pq0s9s9aje4giilpum22aaenr3rt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,7 +24,7 @@
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_loginFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -36,10 +36,10 @@
             app:destination="@id/loginFragment" />
         <action
             android:id="@+id/action_signUpFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
+            app:destination="@id/mainActivity" />
     </fragment>
     <activity
-        android:id="@+id/homeActivity"
+        android:id="@+id/mainActivity"
         android:name="com.group.furniture_shopping_android_app.MainActivity"
         android:label="HomeActivity" />
 </navigation>

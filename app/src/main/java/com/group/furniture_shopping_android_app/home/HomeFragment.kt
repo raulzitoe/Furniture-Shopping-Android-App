@@ -8,8 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentHomeBinding
 
@@ -33,14 +37,21 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewStateObserver = Observer<HomeViewState> { viewState ->
-            (binding.recyclerHomeProducts.adapter as HomeAdapter).productList =
-                viewState.productList
-            (binding.recyclerHomeProducts.adapter as HomeAdapter).notifyDataSetChanged()
+            when(viewState){
+                is HomeViewState.Success -> {(binding.recyclerHomeProducts.adapter as HomeAdapter).productList =
+                    viewState.productList
+                (binding.recyclerHomeProducts.adapter as HomeAdapter).notifyDataSetChanged()}
+            }
         }
         viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)
 
         with(binding.recyclerHomeProducts) {
-            adapter = HomeAdapter()
+            adapter = HomeAdapter(object: HomeAdapter.HomeItemListener{
+                override fun itemClick(id: Int) {
+                    val action = HomeFragmentDirections.actionHomeFragmentToProductFragment(id)
+                    Navigation.findNavController(view).navigate(action)
+                }
+            })
             autoFitColumns(157)
         }
         toggleButtonClicked()

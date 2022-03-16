@@ -56,6 +56,7 @@
     <string name="bed">Bed</string>
     <string name="lamp">Lamp</string>
     <string name="add_all_to_my_cart">Add all to my cart</string>
+    <string name="add_to_cart">Add to cart</string>
     <plurals name="quantity_reviews">
         <item quantity="one">You have made %d review</item>
         <item quantity="other">You have made %d reviews</item>
@@ -92,5 +93,7 @@
         <item>Favorite 6</item>
         <item>Favorite 7</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
