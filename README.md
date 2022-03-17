@@ -32,6 +32,7 @@ This application was created based on a free figma UI kit created by Bruno ([Lin
 
 
 App video overview
+
 https://user-images.githubusercontent.com/37592896/158886600-5c9e787c-65e8-4147-92c6-badd93ae1268.mp4
 
 
