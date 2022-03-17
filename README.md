@@ -32,5 +32,5 @@ This application was created based on a free figma UI kit created by Bruno ([Lin
 
 
 App GIF (colors do not match real App because of GIF compression)
-<br><img src="furniture-app.gif" width="400">
+<br><img src="video.mp4" width="400">
    
