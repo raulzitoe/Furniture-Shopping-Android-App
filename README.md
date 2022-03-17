@@ -27,10 +27,12 @@ This application was created based on a free figma UI kit created by Bruno ([Lin
       - Text Input
       - Shapeable Image View
       - Bottom Navigation View
-   * MVVM (Model View ViewModel) Architecture: (WiP - Requires refactoring some files)
-   * Fetch data from external repository (WiP)
+   * MVVM (Model View ViewModel) Architecture
+   * Fetch data from external repository - Uses Firebase Real-time database and Storage
 
 
-App GIF (colors do not match real App because of GIF compression)
-<br><img src="video.mp4" width="400">
+App video overview
+https://user-images.githubusercontent.com/37592896/158886600-5c9e787c-65e8-4147-92c6-badd93ae1268.mp4
+
+
    
