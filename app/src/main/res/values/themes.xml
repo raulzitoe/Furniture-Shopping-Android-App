@@ -32,6 +32,11 @@
         <item name="cornerSize">10%</item>
     </style>
 
+    <style name="ImageViewRoundedBottomLeft">
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerSizeBottomLeft">15%</item>
+    </style>
+
     <style name="ProfileCard">
         <item name="cardElevation">10dp</item>
         <item name="android:layout_marginStart">20dp</item>

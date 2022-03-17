@@ -61,7 +61,11 @@
         <item quantity="one">You have made %d review</item>
         <item quantity="other">You have made %d reviews</item>
     </plurals>
-
+    <string name="product_info_quantity_reviews_zero">(%d reviews)</string>
+    <plurals name="product_info_quantity_reviews">
+        <item quantity="one">(%d review)</item>
+        <item quantity="other">(%d reviews)</item>
+    </plurals>
 
     <string-array name="product_array">
         <item>Bed</item>
