@@ -22,9 +22,10 @@
                 android:id="@+id/product_image"
                 android:layout_width="157dp"
                 android:layout_height="200dp"
-                tools:src="@color/black"
+                tools:src="@color/primary"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:scaleType="centerCrop"/>
 
             <ImageView
                 android:layout_width="wrap_content"

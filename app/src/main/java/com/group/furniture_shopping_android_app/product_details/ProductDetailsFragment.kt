@@ -56,8 +56,19 @@ class ProductDetailsFragment : Fragment() {
             }
         }
         viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)
+
         binding.btnBack.setOnClickListener {
             activity?.onBackPressed()
+        }
+
+        binding.btnMinus.setOnClickListener {
+            val value = binding.fragmentProductQuantity.text.toString().toInt()
+            binding.fragmentProductQuantity.text = if(value > 0) (value - 1).toString() else 0.toString()
+        }
+
+        binding.btnPlus.setOnClickListener {
+            val value = binding.fragmentProductQuantity.text.toString().toInt()
+            binding.fragmentProductQuantity.text = (value + 1).toString()
         }
 
     }

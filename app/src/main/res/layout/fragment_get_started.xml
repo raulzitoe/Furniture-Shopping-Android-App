@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="150dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/primary"
                 android:paddingLeft="20dp"
                 android:paddingTop="14dp"
                 android:paddingRight="20dp"

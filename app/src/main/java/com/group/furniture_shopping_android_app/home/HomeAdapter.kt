@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.storage
 import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.ItemProductBinding
@@ -31,7 +29,7 @@ class HomeAdapter (val listener: HomeItemListener) : RecyclerView.Adapter<HomeAd
             binding.productName.text = product.name
             binding.productPrice.text = product.price
             binding.root.setOnClickListener { listener.itemClick(product.id) }
-            binding.productImage.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.black))
+            binding.productImage.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.primary))
             binding.productImage.setImageBitmap(null)
             val storageRef = FirebaseStorage.getInstance().reference.child(product.image)
 

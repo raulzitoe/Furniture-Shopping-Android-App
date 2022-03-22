@@ -25,7 +25,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="455dp"
                     android:layout_marginStart="52dp"
-                    android:background="@color/black"
+                    android:background="@color/primary"
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -49,8 +49,63 @@
                     app:layout_constraintLeft_toLeftOf="@id/fragment_product_image"
                     app:layout_constraintRight_toLeftOf="@id/fragment_product_image"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/ImageViewRounded10"
-                    app:rippleColor="@color/light_gray_3"/>
+                    app:rippleColor="@color/light_gray_3"
+                    app:shapeAppearanceOverlay="@style/ImageViewRounded10" />
+
+
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/product_toggle_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/btn_back"
+                    app:layout_constraintStart_toStartOf="@id/btn_back"
+                    app:layout_constraintEnd_toEndOf="@id/btn_back"
+                    android:layout_marginTop="56dp"
+                    android:paddingTop="10dp"
+                    app:singleSelection="true"
+                    android:gravity="center"
+                    android:background="@drawable/bg_color_selector"
+                    android:divider="@drawable/divider_30"
+                    android:showDividers="middle"
+                    app:checkedButton="@id/btn_color_1"
+                    >
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_color_1"
+                    style="@style/ButtonIconOnly"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    app:icon="@drawable/selector_color_1"
+                    android:paddingHorizontal="0dp"
+                    android:backgroundTint="@color/white"
+                    android:stateListAnimator="@null"
+                    android:elevation="0dp"
+                    android:checked="true" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_color_2"
+                    style="@style/ButtonIconOnly"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    app:icon="@drawable/selector_color_2"
+                    android:paddingHorizontal="0dp"
+                    android:backgroundTint="@color/white"
+                    android:stateListAnimator="@null"
+                    android:elevation="0dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_color_3"
+                    style="@style/ButtonIconOnly"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    app:icon="@drawable/selector_color_3"
+                    android:paddingHorizontal="0dp"
+                    android:backgroundTint="@color/white"
+                    android:stateListAnimator="@null"
+                    android:elevation="0dp"/>
+                </com.google.android.material.button.MaterialButtonToggleGroup>
 
                 <TextView
                     android:id="@+id/fragment_product_name"
@@ -70,11 +125,52 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/nunito_sans_bold"
-                    android:text="$ 50"
+                    tools:text="$ 50"
                     android:textColor="@color/font_black"
                     android:textSize="30sp"
                     app:layout_constraintStart_toStartOf="@id/fragment_product_name"
                     app:layout_constraintTop_toBottomOf="@id/fragment_product_name" />
+
+                <Button
+                    android:id="@+id/btn_plus"
+                    style="@style/ButtonIconOnly"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="25dp"
+                    android:backgroundTint="@color/light_gray_4"
+                    app:icon="@drawable/ic_plus"
+                    app:layout_constraintBottom_toBottomOf="@id/fragment_product_price"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/fragment_product_price"
+                    app:rippleColor="@color/light_gray"
+                    app:shapeAppearanceOverlay="@style/ImageViewRounded10" />
+
+                <TextView
+                    android:id="@+id/fragment_product_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/nunito_sans_semibold"
+                    android:text="@string/_0"
+                    android:textColor="@color/font_black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_plus"
+                    app:layout_constraintEnd_toStartOf="@id/btn_plus"
+                    app:layout_constraintTop_toTopOf="@id/btn_plus" />
+
+                <Button
+                    android:id="@+id/btn_minus"
+                    style="@style/ButtonIconOnly"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="15dp"
+                    android:backgroundTint="@color/light_gray_4"
+                    app:icon="@drawable/ic_minus"
+                    app:layout_constraintBottom_toBottomOf="@id/btn_plus"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_product_quantity"
+                    app:layout_constraintTop_toTopOf="@id/btn_plus"
+                    app:rippleColor="@color/light_gray"
+                    app:shapeAppearanceOverlay="@style/ImageViewRounded10" />
 
                 <ImageView
                     android:id="@+id/fragment_product_star"
@@ -92,11 +188,11 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/nunito_sans_bold"
-                    tools:text="4.5"
                     android:textColor="@color/font_black"
                     android:textSize="18sp"
                     app:layout_constraintStart_toEndOf="@id/fragment_product_star"
-                    app:layout_constraintTop_toBottomOf="@id/fragment_product_price" />
+                    app:layout_constraintTop_toBottomOf="@id/fragment_product_price"
+                    tools:text="4.5" />
 
                 <TextView
                     android:id="@+id/fragment_product_reviews_count"
@@ -104,29 +200,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:fontFamily="@font/nunito_sans_semibold"
-                    tools:text="(50 reviews)"
-                    android:textColor="@color/light_gray_2"
+                    android:textColor="@color/text_secondary"
                     app:layout_constraintBaseline_toBaselineOf="@+id/fragment_product_rating"
-                    app:layout_constraintStart_toEndOf="@id/fragment_product_rating" />
+                    app:layout_constraintStart_toEndOf="@id/fragment_product_rating"
+                    tools:text="(50 reviews)" />
 
                 <TextView
                     android:id="@+id/fragment_product_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    tools:text="Minimal Stand is made of by natural wood. The design that is very simple and minimal. This is truly one of the best furnitures in any family for now. With 3 different colors, you can easily select the best match for your home. "
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/fragment_product_price"
-                    app:layout_constraintTop_toBottomOf="@id/fragment_product_rating" />
+                    app:layout_constraintTop_toBottomOf="@id/fragment_product_rating"
+                    tools:text="Minimal Stand is made of by natural wood. The design that is very simple and minimal. This is truly one of the best furnitures in any family for now. With 3 different colors, you can easily select the best match for your home. " />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-        <ImageView
+        <Button
             android:id="@+id/fragment_product_marker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ButtonIconOnly"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/light_gray_4"
             android:layout_marginStart="25dp"
             android:layout_marginBottom="30dp"
-            android:src="@drawable/ic_marker_2"
+            app:icon="@drawable/ic_marker_2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_add_to_cart"
             app:layout_constraintStart_toStartOf="parent" />
@@ -134,15 +232,14 @@
         <Button
             android:id="@+id/btn_add_to_cart"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginEnd="25dp"
             android:paddingHorizontal="74dp"
-            android:paddingVertical="16dp"
             android:text="@string/add_to_cart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/fragment_product_marker"
             app:layout_constraintTop_toTopOf="@id/fragment_product_marker"
-            tools:layout_editor_absoluteX="159dp"
-            tools:layout_editor_absoluteY="701dp" />
+            app:layout_constraintBottom_toBottomOf="@id/fragment_product_marker"
+            app:elevation="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
