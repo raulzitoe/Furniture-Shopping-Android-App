@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_homeFragment_to_productFragment"
             app:destination="@id/productFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myCartFragment"
+            app:destination="@id/myCartFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -42,4 +45,9 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/myCartFragment"
+        android:name="com.group.furniture_shopping_android_app.my_cart.MyCartFragment"
+        android:label="fragment_my_cart"
+        tools:layout="@layout/fragment_my_cart" />
 </navigation>

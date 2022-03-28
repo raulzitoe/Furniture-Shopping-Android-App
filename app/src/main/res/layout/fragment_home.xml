@@ -21,15 +21,15 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
+                android:id="@+id/home_top_app_bar"
                 style="@style/AppBarFurniture"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:menu="@menu/top_app_bar_home"
+
                 app:title="@string/home"
                 app:titleCentered="true" />
         </com.google.android.material.appbar.AppBarLayout>
-
+<!--        app:menu="@menu/top_app_bar_home"-->
         <HorizontalScrollView
             android:id="@+id/filter_scroll"
             android:layout_width="match_parent"

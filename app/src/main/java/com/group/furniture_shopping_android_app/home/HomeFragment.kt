@@ -2,18 +2,14 @@ package com.group.furniture_shopping_android_app.home
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentHomeBinding
 
@@ -26,16 +22,32 @@ class HomeFragment : Fragment() {
     }
     var productFilterList: ArrayList<HomeFilter> = arrayListOf()
 
-    override fun onCreateView(
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_app_bar_home, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.cart ->
+                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_myCartFragment)
+        }
+        return true
+    }
+
+        override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-        return binding.root
+            binding = FragmentHomeBinding.inflate(layoutInflater)
+            setHasOptionsMenu(true)
+            return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).setSupportActionBar(binding.homeTopAppBar)
+
         val viewStateObserver = Observer<HomeViewState> { viewState ->
             when(viewState){
                 is HomeViewState.Success -> {(binding.recyclerHomeProducts.adapter as HomeAdapter).productList =
@@ -55,6 +67,8 @@ class HomeFragment : Fragment() {
             autoFitColumns(157)
         }
         toggleButtonClicked()
+
+
     }
 
     private fun RecyclerView.autoFitColumns(columnWidth: Int) {

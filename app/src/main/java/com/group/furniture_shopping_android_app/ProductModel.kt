@@ -9,5 +9,6 @@ data class ProductModel (
     var description: String = "",
     var rating: Float = 0.0f,
     var reviewsCount: Int = 0,
-    var localImagePath: String = ""
+    var localImagePath: String = "",
+    var quantity: Int = 0
         )
