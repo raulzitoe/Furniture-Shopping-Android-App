@@ -1,35 +1,26 @@
 package com.group.furniture_shopping_android_app.home
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.*
-import com.group.furniture_shopping_android_app.ProductListModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-class HomeViewModel(val context: Context?) : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val _viewState: MutableLiveData<HomeViewState> = MutableLiveData()
     val viewState: LiveData<HomeViewState> = _viewState
-    private lateinit var database: DatabaseReference
 
     init {
-        getProductList()
-    }
-
-    fun getProductList() {
-        database = FirebaseDatabase.getInstance().reference
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                dataSnapshot.getValue(ProductListModel::class.java)?.let { value ->
-                    _viewState.value = HomeViewState.Success(value.productList)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // Failed to read value
-            }
-        })
+        viewModelScope.launch(Dispatchers.IO) {
+            _viewState.postValue(
+                try {
+                    HomeViewState.Success(HomeRepository().getProductList())
+                } catch (e: Exception) {
+                    HomeViewState.Error(e)
+                })
+        }
     }
 }

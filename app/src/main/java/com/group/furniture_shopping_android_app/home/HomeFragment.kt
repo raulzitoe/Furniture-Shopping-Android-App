@@ -17,9 +17,7 @@ import com.group.furniture_shopping_android_app.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels {
-        HomeViewModelFactory(context)
-    }
+    private val viewModel: HomeViewModel by viewModels()
     var productFilterList: ArrayList<HomeFilter> = arrayListOf()
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

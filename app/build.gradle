@@ -80,6 +80,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
 
+    //Co-routines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
