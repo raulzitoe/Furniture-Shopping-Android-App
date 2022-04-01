@@ -28,4 +28,5 @@ class MainActivity : AppCompatActivity() {
     fun setBottomNavigationVisibility(visibility: Int) {
         binding.activityMainBottomNavigationView.visibility = visibility
     }
+
 }

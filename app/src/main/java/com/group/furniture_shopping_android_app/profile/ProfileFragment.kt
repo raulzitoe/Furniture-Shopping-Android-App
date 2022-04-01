@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentProfileBinding
 
@@ -23,6 +25,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bind()
+
+        binding.cardMyOrders.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_myOrdersFragment)
+        }
     }
 
     private fun bind() {

@@ -31,7 +31,6 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:menu="@menu/top_app_bar_my_cart"
                     app:title="@string/my_cart"
                     app:titleCentered="true" />
 

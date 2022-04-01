@@ -25,11 +25,10 @@
                 style="@style/AppBarFurniture"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-
                 app:title="@string/home"
                 app:titleCentered="true" />
         </com.google.android.material.appbar.AppBarLayout>
-<!--        app:menu="@menu/top_app_bar_home"-->
+
         <HorizontalScrollView
             android:id="@+id/filter_scroll"
             android:layout_width="match_parent"
@@ -107,7 +106,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/filter_scroll"
             tools:itemCount="8"
-            tools:listitem="@layout/item_product"/>
+            tools:listitem="@layout/item_product" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

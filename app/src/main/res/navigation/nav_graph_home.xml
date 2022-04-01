@@ -34,7 +34,11 @@
         android:id="@+id/profileFragment"
         android:name="com.group.furniture_shopping_android_app.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_myOrdersFragment"
+            app:destination="@id/myOrdersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productFragment"
         android:name="com.group.furniture_shopping_android_app.product_details.ProductDetailsFragment"
@@ -50,4 +54,14 @@
         android:name="com.group.furniture_shopping_android_app.my_cart.MyCartFragment"
         android:label="fragment_my_cart"
         tools:layout="@layout/fragment_my_cart" />
+    <fragment
+        android:id="@+id/myOrdersFragment"
+        android:name="com.group.furniture_shopping_android_app.my_orders.MyOrdersFragment"
+        android:label="fragment_my_orders"
+        tools:layout="@layout/fragment_my_orders" />
+    <fragment
+        android:id="@+id/myOrdersTabFragment"
+        android:name="com.group.furniture_shopping_android_app.MyOrdersTabFragment"
+        android:label="fragment_my_orders_tab"
+        tools:layout="@layout/fragment_my_orders_tab" />
 </navigation>
