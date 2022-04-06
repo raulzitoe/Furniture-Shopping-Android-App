@@ -3,6 +3,7 @@ package com.group.furniture_shopping_android_app
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.group.furniture_shopping_android_app.databinding.ActivityMainBinding
@@ -23,6 +24,12 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView =
             findViewById<BottomNavigationView>(R.id.activity_main_bottom_navigation_view)
         setupWithNavController(bottomNavigationView, navController)
+
+        // always show selected Bottom Navigation item as selected (return true)
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            NavigationUI.onNavDestinationSelected(item, navController)
+            return@setOnItemSelectedListener true
+        }
     }
 
     fun setBottomNavigationVisibility(visibility: Int) {

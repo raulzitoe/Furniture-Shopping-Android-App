@@ -7,9 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentMyOrdersTabBinding
 
 class MyOrdersTabFragment : Fragment() {
+    companion object {
+        fun newInstance(orderStatus: String) : MyOrdersTabFragment {
+            return MyOrdersTabFragment().apply {
+                arguments = Bundle().apply {
+                    putString("orderStatus", orderStatus)
+                }
+            }
+        }
+    }
+
     private lateinit var binding: FragmentMyOrdersTabBinding
     private val viewModel: MyOrdersTabViewModel by viewModels {
         MyOrdersTabViewModelFactory(requireContext())
@@ -26,10 +37,15 @@ class MyOrdersTabFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = binding.recyclerMyOrders
-        recyclerView.adapter = MyOrdersAdapter()
+        val orderStatusTypes = context?.resources?.getStringArray(R.array.my_order_tabs_titles) ?: arrayOf()
+        recyclerView.adapter = MyOrdersAdapter(
+            arguments?.getString("orderStatus", "")?: "",
+            orderStatusTypes,
+            requireContext())
         viewModel.viewState.observe(viewLifecycleOwner) { list ->
             (recyclerView.adapter as MyOrdersAdapter).myOrdersList = list
         }
     }
+
 
 }

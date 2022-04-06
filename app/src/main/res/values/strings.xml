@@ -102,5 +102,10 @@
     <string name="_0">0</string>
     <string name="my_cart">My Cart</string>
     <string name="back_button">Back Button</string>
+    <string-array name="my_order_tabs_titles">
+        <item>Delivered</item>
+        <item>Processing</item>
+        <item>Canceled</item>
+    </string-array>
 
 </resources>
