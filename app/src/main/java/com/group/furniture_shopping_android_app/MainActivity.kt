@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             findViewById<BottomNavigationView>(R.id.activity_main_bottom_navigation_view)
         setupWithNavController(bottomNavigationView, navController)
 
+
         // always show selected Bottom Navigation item as selected (return true)
         bottomNavigationView.setOnItemSelectedListener { item ->
             NavigationUI.onNavDestinationSelected(item, navController)

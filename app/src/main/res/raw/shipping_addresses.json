@@ -1,0 +1,49 @@
+{
+  "shippingAddressesList": [
+    {
+      "id": 0,
+      "shipping_name": "Raul Vieira",
+      "shipping_address": "000 Main St",
+      "shipping_zipcode": "000 000",
+      "shipping_country": "Canada",
+      "shipping_province": "Ontario",
+      "shipping_city": "Toronto"
+    },
+    {
+      "id": 1,
+      "shipping_name": "Raul Vieira",
+      "shipping_address": "000 Main St",
+      "shipping_zipcode": "000 000",
+      "shipping_country": "Canada",
+      "shipping_province": "Ontario",
+      "shipping_city": "Toronto"
+    },
+    {
+      "id": 2,
+      "shipping_name": "Raul Vieira",
+      "shipping_address": "000 Main St",
+      "shipping_zipcode": "000 000",
+      "shipping_country": "Canada",
+      "shipping_province": "Ontario",
+      "shipping_city": "Toronto"
+    },
+    {
+      "id": 3,
+      "shipping_name": "Raul Vieira",
+      "shipping_address": "000 Main St",
+      "shipping_zipcode": "000 000",
+      "shipping_country": "Canada",
+      "shipping_province": "Ontario",
+      "shipping_city": "Toronto"
+    },
+    {
+      "id": 4,
+      "shipping_name": "Raul Vieira",
+      "shipping_address": "000 Main St",
+      "shipping_zipcode": "000 000",
+      "shipping_country": "Canada",
+      "shipping_province": "Ontario",
+      "shipping_city": "Toronto"
+    }
+  ]
+}

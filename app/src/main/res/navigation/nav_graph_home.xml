@@ -37,7 +37,12 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_myOrdersFragment"
-            app:destination="@id/myOrdersFragment" />
+            app:destination="@id/myOrdersFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_profileFragment_to_shippingAddressesFragment"
+            app:destination="@id/shippingAddressesFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -64,4 +69,9 @@
         android:name="com.group.furniture_shopping_android_app.MyOrdersTabFragment"
         android:label="fragment_my_orders_tab"
         tools:layout="@layout/fragment_my_orders_tab" />
+    <fragment
+        android:id="@+id/shippingAddressesFragment"
+        android:name="com.group.furniture_shopping_android_app.shipping_addresses.ShippingAddressesFragment"
+        android:label="fragment_shipping_addresses"
+        tools:layout="@layout/fragment_shipping_addresses" />
 </navigation>

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.group.furniture_shopping_android_app.R
@@ -28,6 +30,18 @@ class MyOrdersFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val tabLayout = binding.myOrdersTabLayout
         val tabTitles = resources.getStringArray(R.array.my_order_tabs_titles)
+        val myActivity = (activity as AppCompatActivity)
+
+        myActivity.setSupportActionBar(binding.topAppBarMyOrders)
+        myActivity.supportActionBar?.let {
+            it.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+        }
+
+        binding.topAppBarMyOrders.setNavigationOnClickListener {
+            Navigation.findNavController(view).navigateUp()
+        }
 
 
         myOrdersViewPagerAdapter = MyOrdersViewPagerAdapter(this)

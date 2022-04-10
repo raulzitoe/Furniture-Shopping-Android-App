@@ -29,6 +29,9 @@ class ProfileFragment : Fragment() {
         binding.cardMyOrders.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_myOrdersFragment)
         }
+        binding.cardShippingAddresses.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_shippingAddressesFragment)
+        }
     }
 
     private fun bind() {

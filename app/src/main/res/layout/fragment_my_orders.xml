@@ -12,26 +12,44 @@
         android:layout_height="match_parent"
         tools:context=".my_orders.MyOrdersFragment">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/top_app_bar_my_orders_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_bar_my_orders"
+                style="@style/AppBarFurniture"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@string/my_orders"
+                app:titleCentered="true" />
+        </com.google.android.material.appbar.AppBarLayout>
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/my_orders_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/top_app_bar_my_orders_layout">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tab 1" />
+                tools:text="Tab 1" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tab 2" />
+                tools:text="Tab 2" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tab 3" />
+                tools:text="Tab 3" />
 
         </com.google.android.material.tabs.TabLayout>
 
