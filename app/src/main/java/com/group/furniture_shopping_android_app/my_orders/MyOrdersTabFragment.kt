@@ -22,9 +22,7 @@ class MyOrdersTabFragment : Fragment() {
     }
 
     private lateinit var binding: FragmentMyOrdersTabBinding
-    private val viewModel: MyOrdersTabViewModel by viewModels {
-        MyOrdersTabViewModelFactory(requireContext())
-    }
+    private val viewModel: MyOrdersTabViewModel by viewModels ()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

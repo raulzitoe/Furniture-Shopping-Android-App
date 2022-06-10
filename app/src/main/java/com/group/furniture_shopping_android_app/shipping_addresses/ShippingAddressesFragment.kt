@@ -14,9 +14,7 @@ import com.group.furniture_shopping_android_app.databinding.FragmentShippingAddr
 
 class ShippingAddressesFragment : Fragment() {
     private lateinit var binding: FragmentShippingAddressesBinding
-    private val viewModel: ShippingAddressesViewModel by viewModels {
-        ShippingAddressesViewModelFactory(requireContext())
-    }
+    private val viewModel: ShippingAddressesViewModel by viewModels ()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +40,6 @@ class ShippingAddressesFragment : Fragment() {
             Navigation.findNavController(view).navigateUp()
         }
 
-        val shippingAddressList = ShippingAddressesRepository().getShippingAddresses(requireContext())
-        recyclerView.adapter = ShippingAddressesAdapter(shippingAddressList)
+        recyclerView.adapter = viewModel.viewState.value?.let { ShippingAddressesAdapter(it) }
     }
 }

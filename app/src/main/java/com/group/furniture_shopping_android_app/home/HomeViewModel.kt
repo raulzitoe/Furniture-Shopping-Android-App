@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class HomeViewModel : ViewModel() {
 
     private val _viewState: MutableLiveData<HomeViewState> = MutableLiveData()

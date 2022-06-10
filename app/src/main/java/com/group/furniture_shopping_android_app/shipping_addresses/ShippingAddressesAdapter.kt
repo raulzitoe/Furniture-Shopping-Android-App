@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.group.furniture_shopping_android_app.databinding.ItemShippingAddressesBinding
 
-class ShippingAddressesAdapter(var data: ShippingAddressesListModel) :
+class ShippingAddressesAdapter(var data: List<ShippingAddressesModel>) :
     RecyclerView.Adapter<ShippingAddressesAdapter.ShippingAddressesViewHolder>() {
     private lateinit var binding: ItemShippingAddressesBinding
 
     inner class ShippingAddressesViewHolder() :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
-            val myAddress = data.shippingAddressesList[position]
+            val myAddress = data[position]
             val street = myAddress.shipping_address
             val zipcode = myAddress.shipping_zipcode
             val country = myAddress.shipping_country
@@ -33,6 +33,6 @@ class ShippingAddressesAdapter(var data: ShippingAddressesListModel) :
     }
 
     override fun getItemCount(): Int {
-        return data.shippingAddressesList.size
+        return data.size
     }
 }

@@ -10,13 +10,10 @@ import androidx.navigation.Navigation
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentMyCartBinding
 
-
 class MyCartFragment : Fragment() {
 
     private lateinit var binding: FragmentMyCartBinding
-    private val viewModel: MyCartViewModel by viewModels {
-        MyCartViewModelFactory(context)
-    }
+    private val viewModel: MyCartViewModel by viewModels ()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +47,7 @@ class MyCartFragment : Fragment() {
                         viewState.myCartList
                     (binding.recyclerMyCart.adapter as MyCartAdapter).notifyDataSetChanged()
                 }
+                else -> {}
             }
         }
         viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)

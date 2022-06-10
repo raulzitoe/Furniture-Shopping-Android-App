@@ -1,6 +1,5 @@
 package com.group.furniture_shopping_android_app.product_details
 
-import android.graphics.BitmapFactory
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.database.*
@@ -8,7 +7,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.group.furniture_shopping_android_app.ProductModel
 import java.io.File
 
-class ProductDetailsViewModel(val productId: Int) : ViewModel () {
+class ProductDetailsViewModel(private val productId: Int) : ViewModel () {
     val viewState: MutableLiveData<ProductDetailsViewState> = MutableLiveData()
     private lateinit var database: DatabaseReference
 
