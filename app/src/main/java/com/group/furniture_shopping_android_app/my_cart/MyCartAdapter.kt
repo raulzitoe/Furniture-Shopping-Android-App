@@ -5,19 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.databinding.ItemMyCartBinding
+import com.group.furniture_shopping_android_app.repository.CartModel
 
 class MyCartAdapter :
     RecyclerView.Adapter<MyCartAdapter.MyCartViewHolder>() {
     private lateinit var binding: ItemMyCartBinding
-    var myCartList: ArrayList<ProductModel> = arrayListOf()
+    var myCartList: List<CartModel> = arrayListOf()
 
-    class MyCartViewHolder(val binding: ItemMyCartBinding, private val myCartList: ArrayList<ProductModel>) :
+    class MyCartViewHolder(val binding: ItemMyCartBinding, private val myCartList: List<CartModel>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
             val item = myCartList[position]
             binding.tvCartProductName.text = item.name
-            binding.tvCartPrice.text = item.price
+            binding.tvCartPrice.text = item.price.toString()
         }
     }
 
@@ -29,7 +30,6 @@ class MyCartAdapter :
     override fun onBindViewHolder(holder: MyCartViewHolder, position: Int) {
         holder.bind(position)
     }
-
 
     override fun getItemCount(): Int {
         return myCartList.size

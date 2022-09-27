@@ -103,6 +103,7 @@
     <string name="my_cart">My Cart</string>
     <string name="back_button">Back Button</string>
     <string name="use_as_the_shipping_address">Use as the shipping address</string>
+    <string name="product_added">The product was added to the cart!</string>
     <string-array name="my_order_tabs_titles">
         <item>Delivered</item>
         <item>Processing</item>
