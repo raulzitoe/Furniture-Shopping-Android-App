@@ -92,6 +92,11 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.42"
     kapt "com.google.dagger:hilt-compiler:2.42"
 
+    //Coil
+    implementation "io.coil-kt:coil:2.2.1"
+
+    //Firecoil
+    implementation 'com.github.rosariopfernandes:firecoil:2.0.0-rc03'
 }
 
 kapt {
