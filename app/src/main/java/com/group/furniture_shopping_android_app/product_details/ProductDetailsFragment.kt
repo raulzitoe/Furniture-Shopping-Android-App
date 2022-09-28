@@ -1,8 +1,6 @@
 package com.group.furniture_shopping_android_app.product_details
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,22 +8,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.navArgs
+import com.google.firebase.storage.FirebaseStorage
 import com.group.furniture_shopping_android_app.MainActivity
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentProductBinding
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.rosariopfernandes.firecoil.load
 
 
 @AndroidEntryPoint
 class ProductDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentProductBinding
-    private val args: ProductDetailsFragmentArgs by navArgs()
     private val viewModel: ProductDetailsViewModel by viewModels()
-//    {
-//        ProductDetailsViewModelFactory(args.productId)
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,9 +54,8 @@ class ProductDetailsFragment : Fragment() {
                         )
                         fragmentProductDescription.text = viewState.data.description
                     }
-                    val bitmap = BitmapFactory.decodeFile(viewState.data.localImagePath)
-                    binding.fragmentProductImage.setImageBitmap(bitmap)
-
+                    val storageRef = FirebaseStorage.getInstance().reference.child(viewState.data.image)
+                    binding.fragmentProductImage.load(storageRef)
                 }
                 else -> {}
             }

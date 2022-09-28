@@ -1,6 +1,5 @@
 package com.group.furniture_shopping_android_app.home
 
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -9,7 +8,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.ItemProductBinding
-import java.io.File
+import io.github.rosariopfernandes.firecoil.load
 
 class HomeAdapter (val listener: HomeItemListener) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private lateinit var binding: ItemProductBinding
@@ -32,14 +31,7 @@ class HomeAdapter (val listener: HomeItemListener) : RecyclerView.Adapter<HomeAd
             binding.productImage.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.primary))
             binding.productImage.setImageBitmap(null)
             val storageRef = FirebaseStorage.getInstance().reference.child(product.image)
-
-            val localFile = File.createTempFile("tempImage","png")
-            storageRef.getFile(localFile).addOnSuccessListener {
-                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                binding.productImage.setImageBitmap(bitmap)
-            }.addOnFailureListener {
-                //Failed to load image
-            }
+            binding.productImage.load(storageRef)
         }
     }
 
