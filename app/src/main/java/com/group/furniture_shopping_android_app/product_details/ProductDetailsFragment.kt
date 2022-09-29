@@ -53,6 +53,7 @@ class ProductDetailsFragment : Fragment() {
                             reviewsCount
                         )
                         fragmentProductDescription.text = viewState.data.description
+                        fragmentProductQuantity.text = viewState.data.quantity.toString()
                     }
                     val storageRef = FirebaseStorage.getInstance().reference.child(viewState.data.image)
                     binding.fragmentProductImage.load(storageRef)
@@ -70,11 +71,13 @@ class ProductDetailsFragment : Fragment() {
             val value = binding.fragmentProductQuantity.text.toString().toInt()
             binding.fragmentProductQuantity.text =
                 if (value > 0) (value - 1).toString() else 0.toString()
+            viewModel.changeQuantity(binding.fragmentProductQuantity.text.toString().toInt())
         }
 
         binding.btnPlus.setOnClickListener {
             val value = binding.fragmentProductQuantity.text.toString().toInt()
             binding.fragmentProductQuantity.text = (value + 1).toString()
+            viewModel.changeQuantity(binding.fragmentProductQuantity.text.toString().toInt())
         }
 
         binding.btnAddToCart.setOnClickListener {

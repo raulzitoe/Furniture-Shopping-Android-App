@@ -42,6 +42,12 @@ class ProductDetailsViewModel @Inject constructor(
         })
     }
 
+    fun changeQuantity(newQuantity: Int) {
+        (viewState.value as? ProductDetailsViewState.Success)?.let {
+            it.data.quantity = newQuantity
+        }
+    }
+
     fun addToCart() {
         (viewState.value as? ProductDetailsViewState.Success)?.let {
             val productInfo = it.data
@@ -52,7 +58,8 @@ class ProductDetailsViewModel @Inject constructor(
                         name = productInfo.name,
                         price = productInfo.price.toDouble(),
                         category = productInfo.category,
-                        image = productInfo.image
+                        image = productInfo.image,
+                        quantity = productInfo.quantity
                     )
                 )
             }

@@ -30,4 +30,16 @@ class MyCartViewModel @Inject constructor(private val repository: AppRepository)
     fun getCartList() {
         cartList = repository.gelAllCartItems()
     }
+
+    fun removeItemFromCart(cartItem: CartModel) {
+        viewModelScope.launch {
+            repository.removeFromCart(cartItem)
+        }
+    }
+
+    fun updateItemFromCart(cartItem: CartModel) {
+        viewModelScope.launch {
+            repository.updateItemFromCart(cartItem)
+        }
+    }
 }

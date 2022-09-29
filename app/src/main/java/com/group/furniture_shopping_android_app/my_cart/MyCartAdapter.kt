@@ -7,19 +7,38 @@ import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.databinding.ItemMyCartBinding
 import com.group.furniture_shopping_android_app.repository.CartModel
 
-class MyCartAdapter :
+class MyCartAdapter (val listener: CartRecyclerListener) :
     RecyclerView.Adapter<MyCartAdapter.MyCartViewHolder>() {
     private lateinit var binding: ItemMyCartBinding
     var myCartList: List<CartModel> = arrayListOf()
 
-    class MyCartViewHolder(val binding: ItemMyCartBinding, private val myCartList: List<CartModel>) :
+    inner class MyCartViewHolder(val binding: ItemMyCartBinding, private val myCartList: List<CartModel>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
             val item = myCartList[position]
             binding.tvCartProductName.text = item.name
             binding.tvCartPrice.text = item.price.toString()
+            binding.fragmentMyCartQuantity.text = item.quantity.toString()
+            binding.btnRemoveFromCart.setOnClickListener {
+                listener.removeItemFromCart(item)
+            }
+            binding.btnPlus.setOnClickListener {
+                myCartList[position].quantity += 1
+                listener.updateItem(myCartList[position])
+            }
+            binding.btnMinus.setOnClickListener {
+                if (item.quantity >= 2){
+                    myCartList[position].quantity -= 1
+                    listener.updateItem(myCartList[position])
+                }
+            }
         }
+    }
+
+    interface CartRecyclerListener {
+        fun removeItemFromCart(cartItem: CartModel)
+        fun updateItem(cartItem: CartModel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyCartViewHolder {

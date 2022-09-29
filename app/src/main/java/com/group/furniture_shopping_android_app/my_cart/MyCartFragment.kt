@@ -5,14 +5,12 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentMyCartBinding
+import com.group.furniture_shopping_android_app.repository.CartModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -33,7 +31,15 @@ class MyCartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerMyCart.adapter = MyCartAdapter()
+        binding.recyclerMyCart.adapter = MyCartAdapter(listener = object : MyCartAdapter.CartRecyclerListener {
+            override fun removeItemFromCart(cartItem: CartModel) {
+                viewModel.removeItemFromCart(cartItem)
+            }
+
+            override fun updateItem(cartItem: CartModel) {
+                viewModel.updateItemFromCart(cartItem)
+            }
+        })
         val myActivity = (activity as AppCompatActivity)
 
         myActivity.setSupportActionBar(binding.topAppBarMyCart)
@@ -47,17 +53,6 @@ class MyCartFragment : Fragment() {
             Navigation.findNavController(view).navigateUp()
         }
 
-//        val viewStateObserver = Observer<MyCartViewState> { viewState ->
-//            when (viewState) {
-//                is MyCartViewState.Success -> {
-//                    (binding.recyclerMyCart.adapter as MyCartAdapter).myCartList =
-//                        viewState.myCartList
-//                    (binding.recyclerMyCart.adapter as MyCartAdapter).notifyDataSetChanged()
-//                }
-//                else -> {}
-//            }
-//        }
-//        viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)
         lifecycleScope.launch {
             viewModel.cartList.collect {
                 (binding.recyclerMyCart.adapter as MyCartAdapter).myCartList = it
