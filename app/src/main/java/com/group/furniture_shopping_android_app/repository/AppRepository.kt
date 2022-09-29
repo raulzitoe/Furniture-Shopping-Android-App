@@ -23,4 +23,16 @@ class AppRepository @Inject constructor(
         return database.gelAllOrderItems()
     }
 
+    suspend fun removeFromCart(cartItem: CartModel) {
+        database.removeFromCart(cartItem)
+    }
+
+    suspend fun removeFromOrders(orderItem: OrderModel) {
+        database.removeFromOrders(orderItem)
+    }
+
+    suspend fun updateItemFromCart(cartItem: CartModel) {
+        database.updateItemFromCart(cartItem)
+    }
+
 }
