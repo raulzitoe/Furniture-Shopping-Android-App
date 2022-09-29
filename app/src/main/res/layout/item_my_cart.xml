@@ -51,12 +51,19 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_cart_product_name"
                 tools:text="$ 50.00" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/btn_remove_from_cart"
+                style="@style/ButtonIconOnly"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_cancel"
+                app:icon="@drawable/ic_cancel"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                app:rippleColor="@color/light_gray"
+                android:background="@drawable/ripple_transparent_background"
+                android:backgroundTint="@android:color/transparent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
