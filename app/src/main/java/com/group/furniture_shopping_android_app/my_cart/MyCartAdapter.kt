@@ -12,7 +12,7 @@ class MyCartAdapter (val listener: CartRecyclerListener) :
     private lateinit var binding: ItemMyCartBinding
     var myCartList: List<CartModel> = arrayListOf()
 
-    inner class MyCartViewHolder(val binding: ItemMyCartBinding, private val myCartList: List<CartModel>) :
+    inner class MyCartViewHolder(val binding: ItemMyCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
