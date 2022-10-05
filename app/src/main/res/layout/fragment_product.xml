@@ -217,7 +217,7 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/fragment_product_marker"
+            android:id="@+id/btn_favorite_product"
             style="@style/ButtonIconOnly"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -237,9 +237,9 @@
             android:paddingHorizontal="74dp"
             android:text="@string/add_to_cart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fragment_product_marker"
-            app:layout_constraintTop_toTopOf="@id/fragment_product_marker"
-            app:layout_constraintBottom_toBottomOf="@id/fragment_product_marker"
+            app:layout_constraintStart_toEndOf="@id/btn_favorite_product"
+            app:layout_constraintTop_toTopOf="@id/btn_favorite_product"
+            app:layout_constraintBottom_toBottomOf="@id/btn_favorite_product"
             app:elevation="10dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

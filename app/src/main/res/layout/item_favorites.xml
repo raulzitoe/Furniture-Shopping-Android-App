@@ -22,6 +22,7 @@
                 android:layout_marginVertical="12dp"
                 android:layout_marginStart="20dp"
                 android:background="@color/primary"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -31,13 +32,13 @@
                 android:id="@+id/tv_fav_product_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/nunito_sans_semibold"
                 android:textColor="@color/light_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fav_product_image"
                 app:layout_constraintTop_toTopOf="@id/fav_product_image"
-                tools:text="Coffee Table"
-                android:layout_marginStart="20dp"/>
+                tools:text="Coffee Table" />
 
             <TextView
                 android:id="@+id/tv_fav_price"
@@ -50,23 +51,32 @@
                 app:layout_constraintStart_toStartOf="@id/tv_fav_product_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_fav_product_name"
                 tools:text="$ 50.00" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_cancel"
-                app:layout_constraintTop_toTopOf="parent"
+
+            <Button
+                android:id="@+id/btn_remove_from_favorite"
+                style="@style/ButtonIconOnly"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/ripple_transparent_background"
+                android:backgroundTint="@android:color/transparent"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                app:icon="@drawable/ic_cancel"
                 app:layout_constraintEnd_toEndOf="@id/ic_fav_bag"
                 app:layout_constraintStart_toStartOf="@id/ic_fav_bag"
-                android:layout_marginTop="12dp"/>
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/light_gray" />
+
             <ImageView
                 android:id="@+id/ic_fav_bag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="12dp"
                 android:src="@drawable/ic_bag2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="12dp"/>
+                app:layout_constraintEnd_toEndOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

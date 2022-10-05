@@ -85,6 +85,11 @@ class ProductDetailsFragment : Fragment() {
             Toast.makeText(context, getString(R.string.product_added), Toast.LENGTH_SHORT).show()
         }
 
+        binding.btnFavoriteProduct.setOnClickListener {
+            viewModel.addToFavorites()
+            Toast.makeText(context, getString(R.string.favorites_added), Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onDestroy() {

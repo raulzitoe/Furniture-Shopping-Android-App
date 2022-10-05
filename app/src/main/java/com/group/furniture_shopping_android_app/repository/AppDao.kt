@@ -17,17 +17,26 @@ interface AppDao {
     @Insert
     suspend fun insertToOrders(orderItem: OrderModel)
 
+    @Insert
+    suspend fun insertToFavorites(favoritesItem: FavoritesModel)
+
     @Query("Select * from cart_table")
-    fun gelAllCartItems(): Flow<List<CartModel>>
+    fun getAllCartItems(): Flow<List<CartModel>>
 
     @Query("Select * from order_table")
-    fun gelAllOrderItems(): Flow<List<OrderModel>>
+    fun getAllOrderItems(): Flow<List<OrderModel>>
+
+    @Query("Select * from favorites_table")
+    fun getAllFavoritesItems(): Flow<List<FavoritesModel>>
 
     @Delete
     suspend fun removeFromCart(cartItem: CartModel)
 
     @Delete
     suspend fun removeFromOrders(orderItem: OrderModel)
+
+    @Delete
+    suspend fun removeFromFavorites(favoritesItem: FavoritesModel)
 
     @Update
     suspend fun updateItemFromCart(cartItem: CartModel)

@@ -9,6 +9,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.repository.AppRepository
 import com.group.furniture_shopping_android_app.repository.CartModel
+import com.group.furniture_shopping_android_app.repository.FavoritesModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.File
@@ -60,6 +61,23 @@ class ProductDetailsViewModel @Inject constructor(
                         category = productInfo.category,
                         image = productInfo.image,
                         quantity = productInfo.quantity
+                    )
+                )
+            }
+        }
+    }
+
+    fun addToFavorites() {
+        (viewState.value as? ProductDetailsViewState.Success)?.let {
+            val productInfo = it.data
+            viewModelScope.launch {
+                appRepository.insertToFavorites(
+                    FavoritesModel(
+                        id = productInfo.id,
+                        name = productInfo.name,
+                        price = productInfo.price.toDouble(),
+                        category = productInfo.category,
+                        image = productInfo.image
                     )
                 )
             }

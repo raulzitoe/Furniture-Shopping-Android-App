@@ -22,11 +22,11 @@
                 android:layout_marginVertical="12dp"
                 android:layout_marginStart="20dp"
                 android:background="@color/primary"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/ImageViewRounded10"
-                android:scaleType="centerCrop"/>
+                app:shapeAppearanceOverlay="@style/ImageViewRounded10" />
 
             <TextView
                 android:id="@+id/tv_cart_product_name"
@@ -59,14 +59,14 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="20dp"
-                app:icon="@drawable/ic_cancel"
-                android:elevation="0dp"
-                android:stateListAnimator="@null"
-                app:rippleColor="@color/light_gray"
                 android:background="@drawable/ripple_transparent_background"
                 android:backgroundTint="@android:color/transparent"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                app:icon="@drawable/ic_cancel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:rippleColor="@color/light_gray" />
 
             <Button
                 android:id="@+id/btn_minus"
@@ -76,8 +76,8 @@
                 android:layout_marginEnd="15dp"
                 android:backgroundTint="@color/light_gray_4"
                 app:icon="@drawable/ic_minus"
-                app:layout_constraintStart_toStartOf="@id/tv_cart_price"
                 app:layout_constraintBottom_toBottomOf="@id/cart_product_image"
+                app:layout_constraintStart_toStartOf="@id/tv_cart_price"
                 app:rippleColor="@color/light_gray"
                 app:shapeAppearanceOverlay="@style/ImageViewRounded10" />
 
@@ -85,30 +85,30 @@
                 android:id="@+id/fragment_my_cart_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/nunito_sans_semibold"
                 android:text="@string/_0"
                 android:textColor="@color/font_black"
                 android:textSize="18sp"
-                android:layout_marginStart="15dp"
+                app:layout_constraintBottom_toBottomOf="@id/btn_minus"
                 app:layout_constraintStart_toEndOf="@id/btn_minus"
-                app:layout_constraintTop_toTopOf="@id/btn_minus"
-                app:layout_constraintBottom_toBottomOf="@id/btn_minus"/>
+                app:layout_constraintTop_toTopOf="@id/btn_minus" />
+
             <Button
                 android:id="@+id/btn_plus"
                 style="@style/ButtonIconOnly"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginEnd="25dp"
                 android:backgroundTint="@color/light_gray_4"
                 app:icon="@drawable/ic_plus"
-                android:layout_marginStart="15dp"
+                app:layout_constraintBottom_toBottomOf="@id/btn_minus"
                 app:layout_constraintStart_toEndOf="@id/fragment_my_cart_quantity"
                 app:layout_constraintTop_toTopOf="@id/btn_minus"
-                app:layout_constraintBottom_toBottomOf="@id/btn_minus"
                 app:rippleColor="@color/light_gray"
                 app:shapeAppearanceOverlay="@style/ImageViewRounded10" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
