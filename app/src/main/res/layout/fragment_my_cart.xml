@@ -45,9 +45,47 @@
             app:layout_constrainedHeight="true"
             tools:itemCount="3"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/label_total"
             app:layout_constraintTop_toBottomOf="@id/top_app_bar_my_cart_layout"
             tools:listitem="@layout/item_my_cart"/>
+        
+        <TextView
+            android:id="@+id/label_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total"
+            android:layout_marginStart="40dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_checkout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/recycler_my_cart"
+            android:layout_marginVertical="20dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textColor="@color/text_secondary"/>
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="$ 95.00"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/label_total"
+            android:layout_marginEnd="38dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:textColor="@color/primary"/>
+
+        <Button
+            android:id="@+id/btn_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/checkout"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:textSize="18sp"
+            android:paddingVertical="12dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

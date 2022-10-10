@@ -53,6 +53,10 @@ class MyCartFragment : Fragment() {
             Navigation.findNavController(view).navigateUp()
         }
 
+        binding.btnCheckout.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_myCartFragment_to_checkoutFragment)
+        }
+
         lifecycleScope.launch {
             viewModel.cartList.collect {
                 (binding.recyclerMyCart.adapter as MyCartAdapter).myCartList = it
