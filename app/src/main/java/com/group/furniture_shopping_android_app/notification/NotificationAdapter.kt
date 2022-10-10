@@ -4,21 +4,26 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.group.furniture_shopping_android_app.databinding.ItemNotificationBinding
+import com.group.furniture_shopping_android_app.repository.NotificationModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 
-class NotificationAdapter (private val notificationList: Array<String>) : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+class NotificationAdapter () : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
     private lateinit var binding: ItemNotificationBinding
+    var notificationList: List<NotificationModel> = emptyList()
 
-    class NotificationViewHolder(val binding: ItemNotificationBinding, val notificationList: Array<String>) : RecyclerView.ViewHolder(binding.root) {
+    inner class NotificationViewHolder(val binding: ItemNotificationBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
-            binding.tvNotification.text = notificationList[position]
-            binding.tvNotificationText.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis pretium et in arcu adipiscing nec. Turpis pretium et in arcu adipiscing nec. "
+            val item = notificationList[position]
+            binding.tvNotification.text = item.title
+            binding.tvNotificationText.text = item.message
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationViewHolder {
         binding = ItemNotificationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return NotificationViewHolder(binding, notificationList)
+        return NotificationViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
