@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,37 +23,41 @@ class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by viewModels()
     var productFilterList: ArrayList<HomeFilter> = arrayListOf()
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.top_app_bar_home, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.cart ->
-                Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_myCartFragment)
-        }
-        return true
-    }
-
         override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
             binding = FragmentHomeBinding.inflate(layoutInflater)
-            setHasOptionsMenu(true)
             return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val menuHost: MenuHost = requireActivity()
+
         (activity as AppCompatActivity).setSupportActionBar(binding.homeTopAppBar)
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.top_app_bar_home, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.cart -> {
+                        Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_myCartFragment)
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         val viewStateObserver = Observer<HomeViewState> { viewState ->
             when(viewState){
                 is HomeViewState.Success -> {(binding.recyclerHomeProducts.adapter as HomeAdapter).productList =
                     viewState.productList
                 (binding.recyclerHomeProducts.adapter as HomeAdapter).notifyDataSetChanged()}
+                else -> {}
             }
         }
         viewModel.viewState.observe(viewLifecycleOwner, viewStateObserver)
@@ -65,8 +72,6 @@ class HomeFragment : Fragment() {
             autoFitColumns(157)
         }
         toggleButtonClicked()
-
-
     }
 
     private fun RecyclerView.autoFitColumns(columnWidth: Int) {
@@ -76,7 +81,7 @@ class HomeFragment : Fragment() {
         this.layoutManager = GridLayoutManager(this.context, noOfColumns)
     }
 
-    fun toggleButtonClicked() {
+    private fun toggleButtonClicked() {
         binding.homeToggleButtonGroup.addOnButtonCheckedListener { group, checkedId, isChecked ->
             Log.e("asd", "group: $group, checkedId: $checkedId, isChecked: $isChecked")
             val filter = when(checkedId){
