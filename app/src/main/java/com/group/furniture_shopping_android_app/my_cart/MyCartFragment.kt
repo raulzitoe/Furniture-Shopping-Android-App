@@ -25,7 +25,6 @@ class MyCartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMyCartBinding.inflate(layoutInflater)
-        setHasOptionsMenu(true)
         return binding.root
     }
 
