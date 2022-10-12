@@ -107,6 +107,13 @@
     <string name="favorites_added">The product was added to your favorites!</string>
     <string name="checkout">Checkout</string>
     <string name="total">Total:</string>
+    <string name="shipping_address">Shipping Address</string>
+    <string name="payment">Payment</string>
+    <string name="delivery_method">Delivery Method</string>
+    <string name="order">Order:</string>
+    <string name="delivery">Delivery:</string>
+    <string name="total_">Total:</string>
+    <string name="submit_order">Submit Order</string>
     <string-array name="my_order_tabs_titles">
         <item>Delivered</item>
         <item>Processing</item>

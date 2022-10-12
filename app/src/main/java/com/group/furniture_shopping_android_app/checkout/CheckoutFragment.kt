@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentCheckoutBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,5 +21,21 @@ class CheckoutFragment : Fragment() {
     ): View {
         binding = FragmentCheckoutBinding.inflate(layoutInflater)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val myActivity = activity as AppCompatActivity
+
+        myActivity.setSupportActionBar(binding.toolbarCheckout)
+        myActivity.supportActionBar?.let {
+            it.setHomeAsUpIndicator(R.drawable.ic_arrow_left)
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+        }
+
+        binding.toolbarCheckout.setNavigationOnClickListener {
+            Navigation.findNavController(view).navigateUp()
+        }
     }
 }
