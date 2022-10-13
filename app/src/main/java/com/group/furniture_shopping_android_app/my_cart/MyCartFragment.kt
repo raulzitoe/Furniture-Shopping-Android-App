@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import com.group.furniture_shopping_android_app.MainActivity
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentMyCartBinding
 import com.group.furniture_shopping_android_app.repository.CartModel
@@ -25,6 +26,7 @@ class MyCartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMyCartBinding.inflate(layoutInflater)
+        (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         return binding.root
     }
 
@@ -62,5 +64,10 @@ class MyCartFragment : Fragment() {
                 (binding.recyclerMyCart.adapter as MyCartAdapter).notifyDataSetChanged()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
     }
 }

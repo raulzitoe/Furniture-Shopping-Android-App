@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.group.furniture_shopping_android_app.MainActivity
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentCheckoutBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +21,7 @@ class CheckoutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCheckoutBinding.inflate(layoutInflater)
+        (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         return binding.root
     }
 
@@ -37,5 +39,10 @@ class CheckoutFragment : Fragment() {
         binding.toolbarCheckout.setNavigationOnClickListener {
             Navigation.findNavController(view).navigateUp()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
     }
 }

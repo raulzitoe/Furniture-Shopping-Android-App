@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import com.group.furniture_shopping_android_app.MainActivity
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentMyOrdersBinding
 
@@ -23,6 +24,7 @@ class MyOrdersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMyOrdersBinding.inflate(layoutInflater)
+        (activity as MainActivity).setBottomNavigationVisibility(View.GONE)
         return binding.root
     }
 
@@ -50,6 +52,11 @@ class MyOrdersFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabTitles[position]
         }.attach()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
     }
 
 }
