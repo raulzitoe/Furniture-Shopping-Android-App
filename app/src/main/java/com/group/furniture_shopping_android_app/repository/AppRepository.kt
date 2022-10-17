@@ -19,6 +19,10 @@ class AppRepository @Inject constructor(
         database.insertToFavorites(favoritesItem)
     }
 
+    suspend fun insertToShipping(shippingItem: ShippingAddressModel) {
+        database.insertToShippingAddresses(shippingItem)
+    }
+
     fun gelAllCartItems(): Flow<List<CartModel>> {
         return database.getAllCartItems()
     }
@@ -27,8 +31,12 @@ class AppRepository @Inject constructor(
         return database.getAllFavoritesItems()
     }
 
-    fun gelAllOrderItems(): Flow<List<OrderModel>> {
+    fun getAllOrderItems(): Flow<List<OrderModel>> {
         return database.getAllOrderItems()
+    }
+
+    fun getAllShippingAddresses(): Flow<List<ShippingAddressModel>> {
+        return database.getAllShippingItems()
     }
 
     suspend fun removeFromCart(cartItem: CartModel) {
@@ -41,6 +49,10 @@ class AppRepository @Inject constructor(
 
     suspend fun removeFromFavorites(favoritesItem: FavoritesModel) {
         database.removeFromFavorites(favoritesItem)
+    }
+
+    suspend fun removeFromShipping(shippingItem: ShippingAddressModel) {
+        database.removeFromShipping(shippingItem)
     }
 
     suspend fun updateItemFromCart(cartItem: CartModel) {
