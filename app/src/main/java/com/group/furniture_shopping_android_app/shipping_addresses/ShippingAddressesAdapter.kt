@@ -3,29 +3,29 @@ package com.group.furniture_shopping_android_app.shipping_addresses
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.ItemShippingAddressesBinding
+import com.group.furniture_shopping_android_app.repository.ShippingAddressModel
 
-class ShippingAddressesAdapter(var data: List<ShippingAddressesModel>) :
+class ShippingAddressesAdapter() :
     RecyclerView.Adapter<ShippingAddressesAdapter.ShippingAddressesViewHolder>() {
     private lateinit var binding: ItemShippingAddressesBinding
+    var shippingAddressesList: List<ShippingAddressModel> = emptyList()
 
-    inner class ShippingAddressesViewHolder() :
+    inner class ShippingAddressesViewHolder(val binding: ItemShippingAddressesBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
-            val myAddress = data[position]
-            val street = myAddress.shipping_address
-            val zipcode = myAddress.shipping_zipcode
-            val country = myAddress.shipping_country
-            val city = myAddress.shipping_city
-            val province = myAddress.shipping_province
-            binding.shippingName.text = myAddress.shipping_name
-            binding.shippingAddress.text = "$street, $zipcode, $city, $province, $country"
+            val item = shippingAddressesList[position]
+            binding.shippingName.text = item.name
+            binding.shippingAddress.apply {
+                text = context.getString(R.string.full_address, item.street, item.zip, item.city, item.province, item.country)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShippingAddressesViewHolder {
         binding = ItemShippingAddressesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ShippingAddressesViewHolder()
+        return ShippingAddressesViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ShippingAddressesViewHolder, position: Int) {
@@ -33,6 +33,6 @@ class ShippingAddressesAdapter(var data: List<ShippingAddressesModel>) :
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return shippingAddressesList.size
     }
 }

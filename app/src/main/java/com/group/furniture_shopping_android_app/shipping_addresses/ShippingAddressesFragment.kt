@@ -7,14 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.RecyclerView
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentShippingAddressesBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ShippingAddressesFragment : Fragment() {
     private lateinit var binding: FragmentShippingAddressesBinding
-    private val viewModel: ShippingAddressesViewModel by viewModels ()
+    private val viewModel: ShippingAddressesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +32,8 @@ class ShippingAddressesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val myActivity = (activity as AppCompatActivity)
-        val recyclerView = binding.recyclerShippingAddresses
+        binding.recyclerShippingAddresses.adapter = ShippingAddressesAdapter()
+        val recyclerView = (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter)
 
         myActivity.setSupportActionBar(binding.topAppBarShippingAddresses)
         myActivity.supportActionBar?.let {
@@ -40,6 +46,18 @@ class ShippingAddressesFragment : Fragment() {
             Navigation.findNavController(view).navigateUp()
         }
 
-        recyclerView.adapter = viewModel.viewState.value?.let { ShippingAddressesAdapter(it) }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect {
+                    recyclerView.shippingAddressesList = when(it){
+                        is ShippingAddressesState.Success -> it.shippingAdressesList
+                        is ShippingAddressesState.Error -> throw Exception("Failed to load Shipping Addresses")
+
+                }
+            }
+        }
     }
+
+
+}
 }
