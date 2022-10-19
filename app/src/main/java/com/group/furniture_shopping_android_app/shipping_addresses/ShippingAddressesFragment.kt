@@ -1,10 +1,13 @@
 package com.group.furniture_shopping_android_app.shipping_addresses
 
+import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,7 +15,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
 import com.group.furniture_shopping_android_app.R
+import com.group.furniture_shopping_android_app.databinding.DialogShippingAddressesBinding
 import com.group.furniture_shopping_android_app.databinding.FragmentShippingAddressesBinding
+import com.group.furniture_shopping_android_app.repository.ShippingAddressModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -49,15 +54,46 @@ class ShippingAddressesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    recyclerView.shippingAddressesList = when(it){
+                    recyclerView.shippingAddressesList = when (it) {
                         is ShippingAddressesState.Success -> it.shippingAdressesList
                         is ShippingAddressesState.Error -> throw Exception("Failed to load Shipping Addresses")
 
+                    }
                 }
             }
         }
+        binding.floatingActionButton.setOnClickListener {
+            showShippingAddressDialog(clickCallback = { address ->
+                viewModel.insertNewAddress(address)
+            })
+        }
+
     }
 
-
-}
+    private fun showShippingAddressDialog(clickCallback: (ShippingAddressModel) -> Unit) {
+        val dialog = AlertDialog.Builder(requireContext())
+        val bind = DialogShippingAddressesBinding.inflate(layoutInflater)
+        dialog.apply {
+            setPositiveButton(getString(R.string.ok),
+                DialogInterface.OnClickListener { _, _ ->
+                    clickCallback(
+                        ShippingAddressModel(
+                            0,
+                            bind.etName.text.toString(),
+                            bind.etStreet.text.toString(),
+                            bind.etPostalCode.text.toString(),
+                            bind.etCity.text.toString(),
+                            bind.etProvince.text.toString(),
+                            bind.etCountry.text.toString()
+                        )
+                    )
+                })
+            setNegativeButton(getString(R.string.cancel),
+                DialogInterface.OnClickListener { _, _ ->
+                    // User cancelled the dialog
+                })
+        }
+        dialog.setView(bind.root).create()
+        dialog.show()
+    }
 }

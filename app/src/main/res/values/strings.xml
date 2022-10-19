@@ -118,5 +118,7 @@
         <item>Canceled</item>
     </string-array>
     <string name="full_address">%s, %s, %s, %s, %s</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
