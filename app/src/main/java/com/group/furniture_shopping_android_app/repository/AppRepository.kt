@@ -59,4 +59,8 @@ class AppRepository @Inject constructor(
         database.updateItemFromCart(cartItem)
     }
 
+    suspend fun updateShippingAddress(shippingItem: ShippingAddressModel) {
+        database.updateShippingAddress(shippingItem)
+    }
+
 }

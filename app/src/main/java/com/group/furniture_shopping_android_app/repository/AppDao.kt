@@ -50,4 +50,7 @@ interface AppDao {
     @Update
     suspend fun updateItemFromCart(cartItem: CartModel)
 
+    @Update
+    suspend fun updateShippingAddress(shippingItem: ShippingAddressModel)
+
 }

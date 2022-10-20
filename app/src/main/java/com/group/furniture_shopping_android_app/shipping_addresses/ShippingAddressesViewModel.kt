@@ -30,4 +30,10 @@ class ShippingAddressesViewModel @Inject constructor(private val repository: App
             repository.insertToShipping(item)
         }
     }
+
+    fun updateShippingAddress(item: ShippingAddressModel) {
+        viewModelScope.launch {
+            repository.updateShippingAddress(item)
+        }
+    }
 }

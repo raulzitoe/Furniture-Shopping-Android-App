@@ -7,7 +7,7 @@ import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.ItemShippingAddressesBinding
 import com.group.furniture_shopping_android_app.repository.ShippingAddressModel
 
-class ShippingAddressesAdapter() :
+class ShippingAddressesAdapter(val listener: ShippingRecyclerListener) :
     RecyclerView.Adapter<ShippingAddressesAdapter.ShippingAddressesViewHolder>() {
     private lateinit var binding: ItemShippingAddressesBinding
     var shippingAddressesList: List<ShippingAddressModel> = emptyList()
@@ -20,7 +20,14 @@ class ShippingAddressesAdapter() :
             binding.shippingAddress.apply {
                 text = context.getString(R.string.full_address, item.street, item.zip, item.city, item.province, item.country)
             }
+            binding.btnEditAddress.setOnClickListener {
+                listener.clickUpdateButton(item)
+            }
         }
+    }
+
+    interface ShippingRecyclerListener {
+        fun clickUpdateButton(item: ShippingAddressModel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShippingAddressesViewHolder {

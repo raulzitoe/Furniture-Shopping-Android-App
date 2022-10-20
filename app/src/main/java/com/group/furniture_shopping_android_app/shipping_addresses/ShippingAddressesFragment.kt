@@ -1,6 +1,5 @@
 package com.group.furniture_shopping_android_app.shipping_addresses
 
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -37,8 +36,15 @@ class ShippingAddressesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val myActivity = (activity as AppCompatActivity)
-        binding.recyclerShippingAddresses.adapter = ShippingAddressesAdapter()
-        val recyclerView = (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter)
+
+        binding.recyclerShippingAddresses.adapter = ShippingAddressesAdapter(listener = object :
+            ShippingAddressesAdapter.ShippingRecyclerListener {
+            override fun clickUpdateButton(item: ShippingAddressModel) {
+                showShippingAddressDialog(clickCallback = {
+                    viewModel.updateShippingAddress(it)
+                }, ActionType.UPDATE, item)
+            }
+        })
 
         myActivity.setSupportActionBar(binding.topAppBarShippingAddresses)
         myActivity.supportActionBar?.let {
@@ -54,31 +60,49 @@ class ShippingAddressesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    recyclerView.shippingAddressesList = when (it) {
+                    (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).shippingAddressesList = when (it) {
                         is ShippingAddressesState.Success -> it.shippingAdressesList
                         is ShippingAddressesState.Error -> throw Exception("Failed to load Shipping Addresses")
-
                     }
+                    (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).notifyDataSetChanged()
                 }
             }
         }
+
         binding.floatingActionButton.setOnClickListener {
             showShippingAddressDialog(clickCallback = { address ->
                 viewModel.insertNewAddress(address)
-            })
+            }, ActionType.INSERT, ShippingAddressModel(0))
         }
-
     }
 
-    private fun showShippingAddressDialog(clickCallback: (ShippingAddressModel) -> Unit) {
+    enum class ActionType {
+        UPDATE, INSERT
+    }
+
+    private fun showShippingAddressDialog(
+        clickCallback: (ShippingAddressModel) -> Unit,
+        type: ActionType,
+        itemToUpdate: ShippingAddressModel
+    ) {
         val dialog = AlertDialog.Builder(requireContext())
         val bind = DialogShippingAddressesBinding.inflate(layoutInflater)
         dialog.apply {
+            var id = 0
+            if (type == ActionType.UPDATE) {
+                id = itemToUpdate.id
+                bind.etName.setText(itemToUpdate.name)
+                bind.etStreet.setText(itemToUpdate.street)
+                bind.etPostalCode.setText(itemToUpdate.zip)
+                bind.etCity.setText(itemToUpdate.city)
+                bind.etProvince.setText(itemToUpdate.province)
+                bind.etCountry.setText(itemToUpdate.country)
+            }
             setPositiveButton(getString(R.string.ok),
                 DialogInterface.OnClickListener { _, _ ->
                     clickCallback(
                         ShippingAddressModel(
-                            0,
+                            id,
                             bind.etName.text.toString(),
                             bind.etStreet.text.toString(),
                             bind.etPostalCode.text.toString(),
