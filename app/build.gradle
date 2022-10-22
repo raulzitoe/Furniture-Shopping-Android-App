@@ -98,6 +98,9 @@ dependencies {
 
     //Firecoil
     implementation 'com.github.rosariopfernandes:firecoil:2.0.0-rc03'
+
+    //DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 }
 
 kapt {
