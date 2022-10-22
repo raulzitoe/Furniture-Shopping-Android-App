@@ -44,6 +44,10 @@ class ShippingAddressesFragment : Fragment() {
                     viewModel.updateShippingAddress(it)
                 }, ActionType.UPDATE, item)
             }
+
+            override fun clickSetDefaultAddressButton(item: ShippingAddressModel) {
+                viewModel.setDefaultAddress(item)
+            }
         })
 
         myActivity.setSupportActionBar(binding.topAppBarShippingAddresses)
@@ -61,7 +65,7 @@ class ShippingAddressesFragment : Fragment() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
                     (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).shippingAddressesList = when (it) {
-                        is ShippingAddressesState.Success -> it.shippingAdressesList
+                        is ShippingAddressesState.Success -> it.shippingAddressesList
                         is ShippingAddressesState.Error -> throw Exception("Failed to load Shipping Addresses")
                     }
                     (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).notifyDataSetChanged()

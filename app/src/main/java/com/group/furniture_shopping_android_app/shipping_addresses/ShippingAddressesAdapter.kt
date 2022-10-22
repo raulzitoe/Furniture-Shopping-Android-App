@@ -23,11 +23,18 @@ class ShippingAddressesAdapter(val listener: ShippingRecyclerListener) :
             binding.btnEditAddress.setOnClickListener {
                 listener.clickUpdateButton(item)
             }
+            binding.checkboxUseAddress.isChecked = item.isDefaultAddress
+            binding.checkboxUseAddress.setOnCheckedChangeListener { _, isChecked ->
+                if(isChecked){
+                    listener.clickSetDefaultAddressButton(item)
+                }
+            }
         }
     }
 
     interface ShippingRecyclerListener {
         fun clickUpdateButton(item: ShippingAddressModel)
+        fun clickSetDefaultAddressButton(item: ShippingAddressModel)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShippingAddressesViewHolder {

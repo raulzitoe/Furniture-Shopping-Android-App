@@ -12,6 +12,6 @@ data class ShippingAddressModel(
     val city: String = "Toronto",
     val zip: String = "000 000",
     val province: String = "Ontario",
-    val country: String = "Canada"
-
+    val country: String = "Canada",
+    val isDefaultAddress: Boolean = false
 )
