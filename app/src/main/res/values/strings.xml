@@ -120,5 +120,7 @@
     <string name="full_address">%s, %s, %s, %s, %s</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="do_delete_confirm">Do you really want to delete?</string>
+    <string name="delete">Delete</string>
 
 </resources>

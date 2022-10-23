@@ -1,6 +1,5 @@
 package com.group.furniture_shopping_android_app.shipping_addresses
 
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -103,7 +102,7 @@ class ShippingAddressesFragment : Fragment() {
                 bind.etCity.setText(itemToUpdate.city)
                 bind.etProvince.setText(itemToUpdate.province)
                 bind.etCountry.setText(itemToUpdate.country)
-                setNeutralButton("Delete") { _, _ ->
+                setNeutralButton(getString(R.string.delete)) { _, _ ->
                     showConfirmDeleteDialog(deleteCallback = { deleteCallback(itemToUpdate) })
                 }
             }
@@ -130,7 +129,7 @@ class ShippingAddressesFragment : Fragment() {
     private fun showConfirmDeleteDialog(deleteCallback: () -> Unit) {
         val dialog = AlertDialog.Builder(requireContext())
         dialog.apply {
-            setTitle("Do you really want to delete?")
+            setTitle(getString(R.string.do_delete_confirm))
             setPositiveButton(getString(R.string.ok)) { _, _ -> deleteCallback() }
             setNegativeButton(getString(R.string.cancel)) { _, _ -> }
         }
