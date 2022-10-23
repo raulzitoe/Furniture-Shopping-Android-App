@@ -40,9 +40,9 @@ class ShippingAddressesFragment : Fragment() {
         binding.recyclerShippingAddresses.adapter = ShippingAddressesAdapter(listener = object :
             ShippingAddressesAdapter.ShippingRecyclerListener {
             override fun clickUpdateButton(item: ShippingAddressModel) {
-                showShippingAddressDialog(clickCallback = {
+                showShippingAddressDialog(confirmCallback = {
                     viewModel.updateShippingAddress(it)
-                }, ActionType.UPDATE, item)
+                }, deleteCallback = { viewModel.deleteAddress(item) }, ActionType.UPDATE, item)
             }
 
             override fun clickSetDefaultAddressButton(item: ShippingAddressModel) {
@@ -64,19 +64,20 @@ class ShippingAddressesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).shippingAddressesList = when (it) {
-                        is ShippingAddressesState.Success -> it.shippingAddressesList
-                        is ShippingAddressesState.Error -> throw Exception("Failed to load Shipping Addresses")
-                    }
+                    (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).shippingAddressesList =
+                        when (it) {
+                            is ShippingAddressesState.Success -> it.shippingAddressesList
+                            is ShippingAddressesState.Error -> throw Exception("Failed to load Shipping Addresses")
+                        }
                     (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).notifyDataSetChanged()
                 }
             }
         }
 
         binding.floatingActionButton.setOnClickListener {
-            showShippingAddressDialog(clickCallback = { address ->
+            showShippingAddressDialog(confirmCallback = { address ->
                 viewModel.insertNewAddress(address)
-            }, ActionType.INSERT, ShippingAddressModel(0))
+            }, deleteCallback = { }, ActionType.INSERT, ShippingAddressModel(0))
         }
     }
 
@@ -85,7 +86,8 @@ class ShippingAddressesFragment : Fragment() {
     }
 
     private fun showShippingAddressDialog(
-        clickCallback: (ShippingAddressModel) -> Unit,
+        confirmCallback: (ShippingAddressModel) -> Unit,
+        deleteCallback: (ShippingAddressModel) -> Unit,
         type: ActionType,
         itemToUpdate: ShippingAddressModel
     ) {
@@ -101,27 +103,37 @@ class ShippingAddressesFragment : Fragment() {
                 bind.etCity.setText(itemToUpdate.city)
                 bind.etProvince.setText(itemToUpdate.province)
                 bind.etCountry.setText(itemToUpdate.country)
+                setNeutralButton("Delete") { _, _ ->
+                    showConfirmDeleteDialog(deleteCallback = { deleteCallback(itemToUpdate) })
+                }
             }
-            setPositiveButton(getString(R.string.ok),
-                DialogInterface.OnClickListener { _, _ ->
-                    clickCallback(
-                        ShippingAddressModel(
-                            id,
-                            bind.etName.text.toString(),
-                            bind.etStreet.text.toString(),
-                            bind.etPostalCode.text.toString(),
-                            bind.etCity.text.toString(),
-                            bind.etProvince.text.toString(),
-                            bind.etCountry.text.toString()
-                        )
+            setPositiveButton(getString(R.string.ok)) { _, _ ->
+                confirmCallback(
+                    ShippingAddressModel(
+                        id,
+                        bind.etName.text.toString(),
+                        bind.etStreet.text.toString(),
+                        bind.etPostalCode.text.toString(),
+                        bind.etCity.text.toString(),
+                        bind.etProvince.text.toString(),
+                        bind.etCountry.text.toString()
                     )
-                })
-            setNegativeButton(getString(R.string.cancel),
-                DialogInterface.OnClickListener { _, _ ->
-                    // User cancelled the dialog
-                })
+                )
+            }
+            setNegativeButton(getString(R.string.cancel)) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
         }
-        dialog.setView(bind.root).create()
-        dialog.show()
+        dialog.setView(bind.root).create().show()
+    }
+
+    private fun showConfirmDeleteDialog(deleteCallback: () -> Unit) {
+        val dialog = AlertDialog.Builder(requireContext())
+        dialog.apply {
+            setTitle("Do you really want to delete?")
+            setPositiveButton(getString(R.string.ok)) { _, _ -> deleteCallback() }
+            setNegativeButton(getString(R.string.cancel)) { _, _ -> }
+        }
+        dialog.create().show()
     }
 }

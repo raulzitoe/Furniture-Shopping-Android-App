@@ -37,6 +37,12 @@ class ShippingAddressesViewModel @Inject constructor(private val repository: App
         }
     }
 
+    fun deleteAddress(item: ShippingAddressModel) {
+        viewModelScope.launch {
+            repository.removeFromShipping(item)
+        }
+    }
+
     fun updateShippingAddress(item: ShippingAddressModel) {
         viewModelScope.launch {
             repository.updateShippingAddress(item)
