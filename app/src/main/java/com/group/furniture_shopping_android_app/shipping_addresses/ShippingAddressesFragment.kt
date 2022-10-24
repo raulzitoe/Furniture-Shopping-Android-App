@@ -112,8 +112,8 @@ class ShippingAddressesFragment : Fragment() {
                         id,
                         bind.etName.text.toString(),
                         bind.etStreet.text.toString(),
-                        bind.etPostalCode.text.toString(),
                         bind.etCity.text.toString(),
+                        bind.etPostalCode.text.toString(),
                         bind.etProvince.text.toString(),
                         bind.etCountry.text.toString()
                     )

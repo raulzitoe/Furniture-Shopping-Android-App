@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
 
 @Dao
@@ -53,4 +54,6 @@ interface AppDao {
     @Update
     suspend fun updateShippingAddress(shippingItem: ShippingAddressModel)
 
+    @Query("Select COUNT(id) FROM shipping_addresses_table")
+    fun getShippingAddressesQuantity(): Flow<Int>
 }

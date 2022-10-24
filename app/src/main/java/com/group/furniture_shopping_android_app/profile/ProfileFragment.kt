@@ -5,14 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
-
     private lateinit var binding: FragmentProfileBinding
+    private val viewModel: ProfileViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,31 +39,38 @@ class ProfileFragment : Fragment() {
     }
 
     private fun bind() {
+        lifecycleScope.launchWhenCreated {
+            viewModel.shippingAddressesQuantity.collect{ shippingQuantity ->
+                binding.tvShippingAddressQuantity.text = if (shippingQuantity == 0) {
+                    resources.getString(R.string.quantity_shipping_zero)
+                }
+                else resources.getQuantityString(R.plurals.quantity_shipping, shippingQuantity, shippingQuantity)
+            }
+        }
+
         with (binding) {
-            tvProfileName.text = "Raul Vieira"
-            tvProfileEmail.text = "raulguil@gmail.com"
-            val ordersQuantity = 10
-            val shippingQuantity = 1
+            val ordersQuantity = 0
             val cardsQuantity = 2
             val reviewsQuantity = 2
+
+
+            tvProfileName.text = "Raul Vieira"
+            tvProfileEmail.text = "raulguil@gmail.com"
 
             tvMyOrdersQuantity.text = if (ordersQuantity == 0) {
                 resources.getString(R.string.quantity_orders_zero)
             }
             else resources.getQuantityString(R.plurals.quantity_orders, ordersQuantity, ordersQuantity)
 
-            tvShippingAddressQuantity.text = if (shippingQuantity == 0) {
-                resources.getString(R.string.quantity_shipping_zero)
-            }
-            else resources.getQuantityString(R.plurals.quantity_shipping, shippingQuantity, shippingQuantity)
+
             tvCardsQuantity.text = if (cardsQuantity == 0) {
                 resources.getString(R.string.quantity_cards_zero)
             }
-            else resources.getQuantityString(R.plurals.quantity_cards, shippingQuantity, shippingQuantity)
+            else resources.getQuantityString(R.plurals.quantity_cards, cardsQuantity, cardsQuantity)
             tvReviewsQuantity.text = if (reviewsQuantity == 0) {
                 resources.getString(R.string.quantity_reviews_zero)
             }
-            else resources.getQuantityString(R.plurals.quantity_reviews, shippingQuantity, shippingQuantity)
+            else resources.getQuantityString(R.plurals.quantity_reviews, reviewsQuantity, reviewsQuantity)
         }
     }
 }

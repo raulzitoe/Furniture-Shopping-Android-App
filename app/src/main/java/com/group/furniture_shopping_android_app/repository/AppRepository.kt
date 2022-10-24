@@ -1,6 +1,7 @@
 package com.group.furniture_shopping_android_app.repository
 
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject
 
 class AppRepository @Inject constructor(
@@ -61,6 +62,10 @@ class AppRepository @Inject constructor(
 
     suspend fun updateShippingAddress(shippingItem: ShippingAddressModel) {
         database.updateShippingAddress(shippingItem)
+    }
+
+    fun getShippingAddressesQuantity(): Flow<Int> {
+        return database.getShippingAddressesQuantity()
     }
 
 }
