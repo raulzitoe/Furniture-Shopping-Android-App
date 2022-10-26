@@ -63,12 +63,12 @@ class ShippingAddressesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {
-                    (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).shippingAddressesList =
+                    (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).submitList(
                         when (it) {
                             is ShippingAddressesState.Success -> it.shippingAddressesList
                             is ShippingAddressesState.Error -> throw Exception("Failed to load Shipping Addresses")
                         }
-                    (binding.recyclerShippingAddresses.adapter as ShippingAddressesAdapter).notifyDataSetChanged()
+                    )
                 }
             }
         }
