@@ -68,4 +68,8 @@ class AppRepository @Inject constructor(
         return database.getShippingAddressesQuantity()
     }
 
+    fun getOrdersQuantity(): Flow<Int> {
+        return database.getOrdersQuantity()
+    }
+
 }

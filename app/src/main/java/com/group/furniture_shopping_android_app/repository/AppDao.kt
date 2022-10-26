@@ -56,4 +56,8 @@ interface AppDao {
 
     @Query("Select COUNT(id) FROM shipping_addresses_table")
     fun getShippingAddressesQuantity(): Flow<Int>
+
+    @Query("Select COUNT(id) FROM order_table")
+    fun getOrdersQuantity(): Flow<Int>
+
 }

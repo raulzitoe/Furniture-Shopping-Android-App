@@ -31,24 +31,32 @@ class ProfileFragment : Fragment() {
         bind()
 
         binding.cardMyOrders.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_myOrdersFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_profileFragment_to_myOrdersFragment)
         }
         binding.cardShippingAddresses.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_shippingAddressesFragment)
+            Navigation.findNavController(view)
+                .navigate(R.id.action_profileFragment_to_shippingAddressesFragment)
         }
     }
 
     private fun bind() {
         lifecycleScope.launchWhenCreated {
-            viewModel.shippingAddressesQuantity.collect{ shippingQuantity ->
-                binding.tvShippingAddressQuantity.text = if (shippingQuantity == 0) {
-                    resources.getString(R.string.quantity_shipping_zero)
+            viewModel.uiState.collect{
+                if (it is ProfileState.Success) {
+                    val shippingQuantity = it.data.shippingAddressesQuantity
+                     binding.tvShippingAddressQuantity.text = if (shippingQuantity == 0) {
+                            resources.getString(R.string.quantity_shipping_zero)
+                        } else resources.getQuantityString(
+                            R.plurals.quantity_shipping,
+                            shippingQuantity,
+                            shippingQuantity
+                        )
                 }
-                else resources.getQuantityString(R.plurals.quantity_shipping, shippingQuantity, shippingQuantity)
             }
         }
 
-        with (binding) {
+        with(binding) {
             val ordersQuantity = 0
             val cardsQuantity = 2
             val reviewsQuantity = 2
@@ -59,18 +67,27 @@ class ProfileFragment : Fragment() {
 
             tvMyOrdersQuantity.text = if (ordersQuantity == 0) {
                 resources.getString(R.string.quantity_orders_zero)
-            }
-            else resources.getQuantityString(R.plurals.quantity_orders, ordersQuantity, ordersQuantity)
+            } else resources.getQuantityString(
+                R.plurals.quantity_orders,
+                ordersQuantity,
+                ordersQuantity
+            )
 
 
             tvCardsQuantity.text = if (cardsQuantity == 0) {
                 resources.getString(R.string.quantity_cards_zero)
-            }
-            else resources.getQuantityString(R.plurals.quantity_cards, cardsQuantity, cardsQuantity)
+            } else resources.getQuantityString(
+                R.plurals.quantity_cards,
+                cardsQuantity,
+                cardsQuantity
+            )
             tvReviewsQuantity.text = if (reviewsQuantity == 0) {
                 resources.getString(R.string.quantity_reviews_zero)
-            }
-            else resources.getQuantityString(R.plurals.quantity_reviews, reviewsQuantity, reviewsQuantity)
+            } else resources.getQuantityString(
+                R.plurals.quantity_reviews,
+                reviewsQuantity,
+                reviewsQuantity
+            )
         }
     }
 }
