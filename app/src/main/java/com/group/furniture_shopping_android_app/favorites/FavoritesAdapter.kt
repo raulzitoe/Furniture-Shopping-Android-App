@@ -2,6 +2,9 @@ package com.group.furniture_shopping_android_app.favorites
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.storage.FirebaseStorage
 import com.group.furniture_shopping_android_app.databinding.ItemFavoritesBinding
@@ -11,9 +14,25 @@ import io.github.rosariopfernandes.firecoil.load
 class FavoritesAdapter(
     val listener: FavoritesRecyclerListener
 ) :
-    RecyclerView.Adapter<FavoritesAdapter.FavoritesViewHolder>() {
+    ListAdapter<FavoritesModel, FavoritesAdapter.FavoritesViewHolder>(
+        AsyncDifferConfig.Builder(DiffCallback()).build()) {
     private lateinit var binding: ItemFavoritesBinding
-    var favoritesList: List<FavoritesModel> = arrayListOf()
+
+    private class DiffCallback : DiffUtil.ItemCallback<FavoritesModel>() {
+        override fun areItemsTheSame(
+            oldItem: FavoritesModel,
+            newItem: FavoritesModel
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(
+            oldItem: FavoritesModel,
+            newItem: FavoritesModel
+        ): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     inner class FavoritesViewHolder(
         val binding: ItemFavoritesBinding,
@@ -21,13 +40,13 @@ class FavoritesAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
-            val item = favoritesList[position]
+            val item = currentList[position]
             binding.tvFavProductName.text = item.name
             binding.tvFavPrice.text = item.price.toString()
             val storageRef = FirebaseStorage.getInstance().reference.child(item.image)
             binding.favProductImage.load(storageRef)
             binding.btnRemoveFromFavorite.setOnClickListener {
-                listener.removeItemFromFavorites(favoritesList[position])
+                listener.removeItemFromFavorites(currentList[position])
             }
         }
     }
@@ -46,7 +65,7 @@ class FavoritesAdapter(
     }
 
     override fun getItemCount(): Int {
-        return favoritesList.size
+        return currentList.size
     }
 
 }

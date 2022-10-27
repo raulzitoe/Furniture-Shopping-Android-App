@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
 import com.group.furniture_shopping_android_app.databinding.FragmentFavoritesBinding
 import com.group.furniture_shopping_android_app.repository.FavoritesModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -41,8 +39,7 @@ class FavoritesFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.favoritesList.collect{
-                (binding.recyclerFavorites.adapter as FavoritesAdapter).favoritesList = it
-                (binding.recyclerFavorites.adapter as FavoritesAdapter).notifyDataSetChanged()
+                (binding.recyclerFavorites.adapter as FavoritesAdapter).submitList(it)
             }
         }
     }
