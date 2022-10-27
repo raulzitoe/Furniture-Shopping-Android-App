@@ -5,20 +5,17 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
 import com.group.furniture_shopping_android_app.ProductModel
-import com.group.furniture_shopping_android_app.repository.AppRepository
 import com.group.furniture_shopping_android_app.repository.CartModel
 import com.group.furniture_shopping_android_app.repository.FavoritesModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
 class ProductDetailsViewModel @Inject constructor(
     private val state: SavedStateHandle,
-    private val appRepository: AppRepository
+    private val repository: ProductDetailsRepository
 ) : ViewModel() {
     val viewState: MutableLiveData<ProductDetailsViewState> = MutableLiveData()
     private lateinit var database: DatabaseReference
@@ -53,7 +50,7 @@ class ProductDetailsViewModel @Inject constructor(
         (viewState.value as? ProductDetailsViewState.Success)?.let {
             val productInfo = it.data
             viewModelScope.launch {
-                appRepository.insertToCart(
+                repository.insertToCart(
                     CartModel(
                         id = productInfo.id,
                         name = productInfo.name,
@@ -71,7 +68,7 @@ class ProductDetailsViewModel @Inject constructor(
         (viewState.value as? ProductDetailsViewState.Success)?.let {
             val productInfo = it.data
             viewModelScope.launch {
-                appRepository.insertToFavorites(
+                repository.insertToFavorites(
                     FavoritesModel(
                         id = productInfo.id,
                         name = productInfo.name,
