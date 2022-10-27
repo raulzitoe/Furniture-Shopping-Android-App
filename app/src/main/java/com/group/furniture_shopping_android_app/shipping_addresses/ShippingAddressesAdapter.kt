@@ -2,6 +2,7 @@ package com.group.furniture_shopping_android_app.shipping_addresses
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,7 @@ import com.group.furniture_shopping_android_app.repository.ShippingAddressModel
 
 class ShippingAddressesAdapter(val listener: ShippingRecyclerListener) :
     ListAdapter<ShippingAddressModel, ShippingAddressesAdapter.ShippingAddressesViewHolder>(
-        DiffCallback()
+        AsyncDifferConfig.Builder(DiffCallback()).build()
     ) {
     private lateinit var binding: ItemShippingAddressesBinding
 
