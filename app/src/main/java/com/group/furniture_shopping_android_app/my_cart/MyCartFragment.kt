@@ -60,8 +60,7 @@ class MyCartFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.cartList.collect {
-                (binding.recyclerMyCart.adapter as MyCartAdapter).myCartList = it
-                (binding.recyclerMyCart.adapter as MyCartAdapter).notifyDataSetChanged()
+                (binding.recyclerMyCart.adapter as MyCartAdapter).submitList(it)
             }
         }
     }

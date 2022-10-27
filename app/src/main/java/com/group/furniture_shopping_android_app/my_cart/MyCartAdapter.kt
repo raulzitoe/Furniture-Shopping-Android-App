@@ -2,6 +2,9 @@ package com.group.furniture_shopping_android_app.my_cart
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.storage.FirebaseStorage
 import com.group.furniture_shopping_android_app.databinding.ItemMyCartBinding
@@ -9,15 +12,33 @@ import com.group.furniture_shopping_android_app.repository.CartModel
 import io.github.rosariopfernandes.firecoil.load
 
 class MyCartAdapter (val listener: CartRecyclerListener) :
-    RecyclerView.Adapter<MyCartAdapter.MyCartViewHolder>() {
+    ListAdapter<CartModel, MyCartAdapter.MyCartViewHolder>(
+        AsyncDifferConfig.Builder(
+            DiffCallback()
+        ).build()) {
     private lateinit var binding: ItemMyCartBinding
-    var myCartList: List<CartModel> = arrayListOf()
+
+    private class DiffCallback : DiffUtil.ItemCallback<CartModel>() {
+        override fun areItemsTheSame(
+            oldItem: CartModel,
+            newItem: CartModel
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(
+            oldItem: CartModel,
+            newItem: CartModel
+        ): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     inner class MyCartViewHolder(val binding: ItemMyCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
-            val item = myCartList[position]
+            val item = currentList[position]
             binding.tvCartProductName.text = item.name
             binding.tvCartPrice.text = item.price.toString()
             binding.fragmentMyCartQuantity.text = item.quantity.toString()
@@ -27,13 +48,13 @@ class MyCartAdapter (val listener: CartRecyclerListener) :
                 listener.removeItemFromCart(item)
             }
             binding.btnPlus.setOnClickListener {
-                myCartList[position].quantity += 1
-                listener.updateItem(myCartList[position])
+                currentList[position].quantity += 1
+                listener.updateItem(currentList[position])
             }
             binding.btnMinus.setOnClickListener {
                 if (item.quantity >= 2){
-                    myCartList[position].quantity -= 1
-                    listener.updateItem(myCartList[position])
+                    currentList[position].quantity -= 1
+                    listener.updateItem(currentList[position])
                 }
             }
         }
@@ -54,7 +75,7 @@ class MyCartAdapter (val listener: CartRecyclerListener) :
     }
 
     override fun getItemCount(): Int {
-        return myCartList.size
+        return currentList.size
     }
 
 }
