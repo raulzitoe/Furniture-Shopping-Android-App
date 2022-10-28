@@ -1,7 +1,6 @@
 package com.group.furniture_shopping_android_app.my_orders
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat

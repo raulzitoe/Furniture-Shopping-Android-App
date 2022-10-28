@@ -1,6 +1,5 @@
 package com.group.furniture_shopping_android_app.my_cart
 
-import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.repository.CartModel
 import kotlinx.coroutines.flow.Flow
 

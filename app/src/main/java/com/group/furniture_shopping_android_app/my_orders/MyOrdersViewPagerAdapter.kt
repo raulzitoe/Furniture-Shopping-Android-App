@@ -1,6 +1,5 @@
 package com.group.furniture_shopping_android_app.my_orders
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.group.furniture_shopping_android_app.R

@@ -5,10 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.group.furniture_shopping_android_app.databinding.ItemNotificationBinding
 import com.group.furniture_shopping_android_app.repository.NotificationModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 
-class NotificationAdapter () : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
+class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder>() {
     private lateinit var binding: ItemNotificationBinding
     var notificationList: List<NotificationModel> = emptyList()
 

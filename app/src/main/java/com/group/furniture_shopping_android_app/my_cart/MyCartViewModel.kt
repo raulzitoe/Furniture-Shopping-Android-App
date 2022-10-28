@@ -23,7 +23,7 @@ class MyCartViewModel @Inject constructor(private val repository: MyCartReposito
         getCartList()
     }
 
-    fun getCartList() {
+    private fun getCartList() {
         cartList = repository.gelAllCartItems()
     }
 
