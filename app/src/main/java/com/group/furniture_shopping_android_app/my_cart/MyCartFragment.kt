@@ -5,7 +5,9 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
 import com.group.furniture_shopping_android_app.MainActivity
 import com.group.furniture_shopping_android_app.R
@@ -32,15 +34,6 @@ class MyCartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerMyCart.adapter = MyCartAdapter(listener = object : MyCartAdapter.CartRecyclerListener {
-            override fun removeItemFromCart(cartItem: CartModel) {
-                viewModel.removeItemFromCart(cartItem)
-            }
-
-            override fun updateItem(cartItem: CartModel) {
-                viewModel.updateItemFromCart(cartItem)
-            }
-        })
         val myActivity = (activity as AppCompatActivity)
 
         myActivity.setSupportActionBar(binding.topAppBarMyCart)
@@ -50,17 +43,39 @@ class MyCartFragment : Fragment() {
             it.setDisplayShowHomeEnabled(true)
         }
 
-        binding.topAppBarMyCart.setNavigationOnClickListener {
-            Navigation.findNavController(view).navigateUp()
+        with(binding) {
+            recyclerMyCart.adapter =
+                MyCartAdapter(listener = object : MyCartAdapter.CartRecyclerListener {
+                    override fun removeItemFromCart(cartItem: CartModel) {
+                        viewModel.removeItemFromCart(cartItem)
+                    }
+
+                    override fun updateItem(cartItem: CartModel) {
+                        viewModel.updateItemFromCart(cartItem)
+                    }
+                })
+
+            topAppBarMyCart.setNavigationOnClickListener {
+                Navigation.findNavController(view).navigateUp()
+            }
+
+            btnCheckout.setOnClickListener {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_myCartFragment_to_checkoutFragment)
+            }
         }
 
-        binding.btnCheckout.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_myCartFragment_to_checkoutFragment)
-        }
-
-        lifecycleScope.launch {
-            viewModel.cartList.collect {
-                (binding.recyclerMyCart.adapter as MyCartAdapter).submitList(it)
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect {
+                    when (it) {
+                        is MyCartViewState.Success -> (binding.recyclerMyCart.adapter as MyCartAdapter).submitList(
+                            it.myCartList
+                        )
+                        is MyCartViewState.Error -> throw Exception("Failed to load My Cart")
+                        is MyCartViewState.Loading -> {}
+                    }
+                }
             }
         }
     }

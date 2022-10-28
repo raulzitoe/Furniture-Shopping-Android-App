@@ -11,14 +11,17 @@ import com.group.furniture_shopping_android_app.databinding.ItemMyCartBinding
 import com.group.furniture_shopping_android_app.repository.CartModel
 import io.github.rosariopfernandes.firecoil.load
 
-class MyCartAdapter (val listener: CartRecyclerListener) :
+class MyCartAdapter(val listener: CartRecyclerListener) :
     ListAdapter<CartModel, MyCartAdapter.MyCartViewHolder>(
         AsyncDifferConfig.Builder(
             DiffCallback()
-        ).build()) {
+        ).build()
+    ) {
+
     private lateinit var binding: ItemMyCartBinding
 
     private class DiffCallback : DiffUtil.ItemCallback<CartModel>() {
+
         override fun areItemsTheSame(
             oldItem: CartModel,
             newItem: CartModel
@@ -52,7 +55,7 @@ class MyCartAdapter (val listener: CartRecyclerListener) :
                 listener.updateItem(currentList[position])
             }
             binding.btnMinus.setOnClickListener {
-                if (item.quantity >= 2){
+                if (item.quantity >= 2) {
                     currentList[position].quantity -= 1
                     listener.updateItem(currentList[position])
                 }
@@ -61,6 +64,7 @@ class MyCartAdapter (val listener: CartRecyclerListener) :
     }
 
     interface CartRecyclerListener {
+
         fun removeItemFromCart(cartItem: CartModel)
         fun updateItem(cartItem: CartModel)
     }

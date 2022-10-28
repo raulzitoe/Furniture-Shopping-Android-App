@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ShippingAddressesFragment : Fragment() {
+
     private lateinit var binding: FragmentShippingAddressesBinding
     private val viewModel: ShippingAddressesViewModel by viewModels()
 
