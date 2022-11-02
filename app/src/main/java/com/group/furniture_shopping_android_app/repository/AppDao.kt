@@ -21,7 +21,7 @@ interface AppDao {
     @Update
     suspend fun updateItemFromCart(cartItem: CartModel)
 
-    @Query("Select * from cart_table")
+    @Query("SELECT * FROM cart_table")
     fun getAllCartItems(): Flow<List<CartModel>>
 
     @Query("SELECT EXISTS(SELECT 1 FROM cart_table WHERE productId = :itemId)")
@@ -35,10 +35,10 @@ interface AppDao {
     @Delete
     suspend fun removeFromOrders(orderItem: OrderModel)
 
-    @Query("Select * from order_table")
+    @Query("SELECT * FROM order_table")
     fun getAllOrderItems(): Flow<List<OrderModel>>
 
-    @Query("Select COUNT(id) FROM order_table")
+    @Query("SELECT COUNT(id) FROM order_table")
     fun getOrdersQuantity(): Flow<Int>
 
 
@@ -52,10 +52,10 @@ interface AppDao {
     @Update
     suspend fun updateShippingAddress(shippingItem: ShippingAddressModel)
 
-    @Query("Select * from shipping_addresses_table")
+    @Query("SELECT * FROM shipping_addresses_table")
     fun getAllShippingItems(): Flow<List<ShippingAddressModel>>
 
-    @Query("Select COUNT(id) FROM shipping_addresses_table")
+    @Query("SELECT COUNT(id) FROM shipping_addresses_table")
     fun getShippingAddressesQuantity(): Flow<Int>
 
 
@@ -66,6 +66,6 @@ interface AppDao {
     @Delete
     suspend fun removeFromFavorites(favoritesItem: FavoritesModel)
 
-    @Query("Select * from favorites_table")
+    @Query("SELECT * FROM favorites_table")
     fun getAllFavoritesItems(): Flow<List<FavoritesModel>>
 }
