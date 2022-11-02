@@ -17,6 +17,7 @@ class ProductDetailsViewModel @Inject constructor(
     private val state: SavedStateHandle,
     private val repository: ProductDetailsRepository
 ) : ViewModel() {
+
     val viewState: MutableLiveData<ProductDetailsViewState> = MutableLiveData()
     private lateinit var database: DatabaseReference
 
@@ -34,6 +35,7 @@ class ProductDetailsViewModel @Inject constructor(
                 }
 
             }
+
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
             }
@@ -48,18 +50,21 @@ class ProductDetailsViewModel @Inject constructor(
 
     fun addToCart() {
         (viewState.value as? ProductDetailsViewState.Success)?.let {
-            val productInfo = it.data
+            val itemId = (viewState.value as ProductDetailsViewState.Success).data.id
             viewModelScope.launch {
-                repository.insertToCart(
-                    CartModel(
-                        id = productInfo.id,
-                        name = productInfo.name,
-                        price = productInfo.price.toDouble(),
-                        category = productInfo.category,
-                        image = productInfo.image,
-                        quantity = productInfo.quantity
+                if (!repository.isOnCartDatabase(itemId)) {
+                    val productInfo = it.data
+                    repository.insertToCart(
+                        CartModel(
+                            productId = productInfo.id,
+                            name = productInfo.name,
+                            price = productInfo.price.toDouble(),
+                            category = productInfo.category,
+                            image = productInfo.image,
+                            quantity = productInfo.quantity
+                        )
                     )
-                )
+                }
             }
         }
     }

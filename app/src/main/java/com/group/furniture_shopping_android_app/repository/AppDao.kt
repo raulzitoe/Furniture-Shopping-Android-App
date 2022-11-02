@@ -24,6 +24,9 @@ interface AppDao {
     @Query("Select * from cart_table")
     fun getAllCartItems(): Flow<List<CartModel>>
 
+    @Query("SELECT EXISTS(SELECT 1 FROM cart_table WHERE productId = :itemId)")
+    suspend fun isOnCartDatabase(itemId: Int) : Boolean
+
 
     //Orders Operations
     @Insert

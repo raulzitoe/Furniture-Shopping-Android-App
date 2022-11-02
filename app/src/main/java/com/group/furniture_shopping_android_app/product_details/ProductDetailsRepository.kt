@@ -14,4 +14,9 @@ class ProductDetailsRepository @Inject constructor(private val database: AppDao)
     suspend fun insertToCart(cartItem: CartModel) {
         database.insertToCart(cartItem)
     }
+
+    suspend fun isOnCartDatabase(id: Int) : Boolean {
+        return database.isOnCartDatabase(id)
+    }
+
 }
