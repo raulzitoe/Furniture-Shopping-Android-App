@@ -43,6 +43,9 @@
             android:id="@+id/action_profileFragment_to_shippingAddressesFragment"
             app:destination="@id/shippingAddressesFragment"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -82,4 +85,8 @@
         android:id="@+id/checkoutFragment"
         android:name="com.group.furniture_shopping_android_app.checkout.CheckoutFragment"
         android:label="CheckoutFragment" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.group.furniture_shopping_android_app.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
+
     private lateinit var binding: FragmentProfileBinding
     private val viewModel: ProfileViewModel by viewModels()
 
@@ -29,28 +30,35 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         bind()
 
-        binding.cardMyOrders.setOnClickListener {
-            Navigation.findNavController(view)
-                .navigate(R.id.action_profileFragment_to_myOrdersFragment)
+        with(binding) {
+            cardMyOrders.setOnClickListener {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_profileFragment_to_myOrdersFragment)
+            }
+            cardShippingAddresses.setOnClickListener {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_profileFragment_to_shippingAddressesFragment)
+            }
+            cardSettings.setOnClickListener {
+                Navigation.findNavController(view)
+                    .navigate(R.id.action_profileFragment_to_settingsFragment)
+            }
         }
-        binding.cardShippingAddresses.setOnClickListener {
-            Navigation.findNavController(view)
-                .navigate(R.id.action_profileFragment_to_shippingAddressesFragment)
-        }
+
     }
 
     private fun bind() {
         lifecycleScope.launchWhenCreated {
-            viewModel.uiState.collect{
+            viewModel.uiState.collect {
                 if (it is ProfileState.Success) {
                     val shippingQuantity = it.data.shippingAddressesQuantity
-                     binding.tvShippingAddressQuantity.text = if (shippingQuantity == 0) {
-                            resources.getString(R.string.quantity_shipping_zero)
-                        } else resources.getQuantityString(
-                            R.plurals.quantity_shipping,
-                            shippingQuantity,
-                            shippingQuantity
-                        )
+                    binding.tvShippingAddressQuantity.text = if (shippingQuantity == 0) {
+                        resources.getString(R.string.quantity_shipping_zero)
+                    } else resources.getQuantityString(
+                        R.plurals.quantity_shipping,
+                        shippingQuantity,
+                        shippingQuantity
+                    )
                 }
             }
         }
