@@ -126,5 +126,13 @@
     <string name="test_password">123456</string>
     <string name="test_login">test@test.com</string>
     <string name="logout">Logout</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="sales">Sales</string>
+    <string name="new_arrivals">New Arrivals</string>
+    <string name="delivery_status_change">Delivery Status Change</string>
+    <string name="help_center">Help Center</string>
+    <string name="faq">FAQ</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="privacy_terms"><![CDATA[Privacy & Terms]]></string>
 
 </resources>
