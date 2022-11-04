@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginSignUpActivity"
+            app:destination="@id/loginSignUpActivity" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -89,4 +92,8 @@
         android:id="@+id/settingsFragment"
         android:name="com.group.furniture_shopping_android_app.settings.SettingsFragment"
         android:label="SettingsFragment" />
+    <activity
+        android:id="@+id/loginSignUpActivity"
+        android:name="com.group.furniture_shopping_android_app.login_signup.LoginSignUpActivity"
+        android:label="LoginSignUpActivity" />
 </navigation>

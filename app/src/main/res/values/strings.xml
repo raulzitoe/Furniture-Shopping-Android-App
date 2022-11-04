@@ -125,5 +125,6 @@
     <string name="test_account">login: test@test.com / 123456</string>
     <string name="test_password">123456</string>
     <string name="test_login">test@test.com</string>
+    <string name="logout">Logout</string>
 
 </resources>
