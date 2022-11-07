@@ -95,6 +95,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_signup_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_sans"
@@ -113,6 +114,7 @@
                         app:layout_constraintTop_toBottomOf="@id/signup_name">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_signup_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_sans"
@@ -131,6 +133,7 @@
                         app:layout_constraintTop_toBottomOf="@id/signup_email">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_signup_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_sans"
@@ -150,6 +153,7 @@
                         app:layout_constraintTop_toBottomOf="@id/signup_password">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_signup_confirm_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nunito_sans"
