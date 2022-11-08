@@ -122,7 +122,7 @@
     <string name="cancel">Cancel</string>
     <string name="do_delete_confirm">Do you really want to delete?</string>
     <string name="delete">Delete</string>
-    <string name="test_account">login: test@test.com / 123456</string>
+    <string name="test_account">login: test@test.com / 123456 or sign up</string>
     <string name="test_password">123456</string>
     <string name="test_login">test@test.com</string>
     <string name="logout">Logout</string>

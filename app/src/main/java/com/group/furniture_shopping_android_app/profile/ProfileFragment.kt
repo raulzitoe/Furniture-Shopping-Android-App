@@ -52,8 +52,6 @@ class ProfileFragment : Fragment() {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-
-
         bind()
 
         with(binding) {
@@ -85,6 +83,8 @@ class ProfileFragment : Fragment() {
                         shippingQuantity,
                         shippingQuantity
                     )
+                    binding.tvProfileName.text = it.data.name
+                    binding.tvProfileEmail.text = it.data.email
                 }
             }
         }
@@ -93,10 +93,6 @@ class ProfileFragment : Fragment() {
             val ordersQuantity = 0
             val cardsQuantity = 2
             val reviewsQuantity = 2
-
-
-            tvProfileName.text = "Raul Vieira"
-            tvProfileEmail.text = "raulguil@gmail.com"
 
             tvMyOrdersQuantity.text = if (ordersQuantity == 0) {
                 resources.getString(R.string.quantity_orders_zero)

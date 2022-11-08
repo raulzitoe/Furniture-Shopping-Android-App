@@ -25,7 +25,7 @@ class SignUpViewModel @Inject constructor(): ViewModel() {
                     Log.d("Firebase", "createUserWithEmail:success")
                     val user = auth.currentUser
                     if (user != null) {
-                        database.child("users").child(user.uid).setValue(NewUserModel(name, email))
+                        database.child("users").child(user.uid).setValue(UserModel(name, email))
                     }
                 } else {
                     // If sign in fails, display a message to the user.
