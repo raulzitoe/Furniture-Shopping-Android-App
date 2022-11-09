@@ -5,26 +5,29 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.storage.FirebaseStorage
+import com.group.furniture_shopping_android_app.ProductListModel
 import com.group.furniture_shopping_android_app.ProductModel
 import com.group.furniture_shopping_android_app.R
 import com.group.furniture_shopping_android_app.databinding.ItemProductBinding
 import io.github.rosariopfernandes.firecoil.load
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeAdapter (val listener: HomeItemListener) : RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     private lateinit var binding: ItemProductBinding
-    var productList: ArrayList<ProductModel> = arrayListOf()
+    var productList: ProductListModel = ProductListModel(arrayListOf())
         set(value) {
             field = value
-            productFilteredList = value
+            productFilteredList = ProductListModel(value.products)
         }
-    private var productFilteredList: ArrayList<ProductModel> = arrayListOf()
+    private var productFilteredList: ProductListModel = ProductListModel(arrayListOf())
 
 
     inner class HomeViewHolder(val binding: ItemProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(position: Int) {
-            val product = productFilteredList[position]
+            val product = productFilteredList.products[position]
             binding.productName.text = product.name
             binding.productPrice.text = product.price
             binding.root.setOnClickListener { listener.itemClick(product.id) }
@@ -45,19 +48,19 @@ class HomeAdapter (val listener: HomeItemListener) : RecyclerView.Adapter<HomeAd
     }
 
     override fun getItemCount(): Int {
-        return productFilteredList.size
+        return productFilteredList.products.size
     }
 
     fun setFilters(productFilterList: ArrayList<HomeFilter>) {
-        productFilteredList = arrayListOf()
+        productFilteredList = ProductListModel(arrayListOf())
 
         if (productFilterList.isEmpty()) {
             productFilteredList = productList
             return
         }
 
-        productFilteredList = productList.filter {
-            it.category.toUpperCase() in productFilterList.toString()
+        productFilteredList.products = productList.products.filter {
+            it.category.uppercase(Locale.getDefault()) in productFilterList.toString()
         } as ArrayList<ProductModel>
     }
 

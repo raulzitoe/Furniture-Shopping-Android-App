@@ -1,8 +1,8 @@
 package com.group.furniture_shopping_android_app
 
-import com.google.gson.annotations.SerializedName
+import com.google.firebase.database.PropertyName
 
 data class ProductListModel (
-    @SerializedName("productList", alternate = ["myCartList", "favoritesList"])
-    var productList: ArrayList<ProductModel> = arrayListOf()
+    @get:PropertyName("productList") @set:PropertyName("productList")
+    var products: ArrayList<ProductModel> = arrayListOf()
         )
